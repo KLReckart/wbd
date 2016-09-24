@@ -16,9 +16,7 @@ class Angle():
             except ValueError:
                 return False
             
-        
         return True
-    
     
     #KLR's made function
     # Purpose: return True if the string is a valid value, else returns False
