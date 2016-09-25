@@ -233,4 +233,8 @@ class TCurveTest(unittest.TestCase):
 #------------------------------------------------
 # Integrate Tests
 
-    
+    def test500_010_ShouldCalWithTN(self):
+        #test input of t and n, not worrying about inputting f yet
+        myT = T.TCurve(self.nominalN)
+        self.assertAlmostEquals(myT.integrate(1, 4, 0), 0.5, 3)
+        
