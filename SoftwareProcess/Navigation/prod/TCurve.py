@@ -61,10 +61,31 @@ class TCurve(object):
         result = base ** exponent
         return result
     
-    def integrate(self, t, n, f):
+    def testingTemp(self, u, n):
+        return u
+    
+    def integrate(self, t, n_IN, f_IN):
+        
+        #note: this integrates from 0 to n -> [0, n]; b/c p() takes care of (-infinity, 0]
+        
+        # f is the inputted function
+        # n is the variable in the given equation
+        # t is the upperbound
+        
+        #so we need
+        
         result = 0.0
         
-        return result
+        #beginning and end coefficient
+        begendCoef = 1
+        #even coefficient
+        evenCoef = 4
+        #odd coefficient
+        oddCoef = 2
+        currentU = 0
+        begVal = f_IN(currentU, n_IN)
+        
+        return begVal
         
         
     
