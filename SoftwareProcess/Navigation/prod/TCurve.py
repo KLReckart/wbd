@@ -85,7 +85,7 @@ class TCurve(object):
         currentU = 0
         begVal = f_IN(currentU, n_IN)
         
-        return begVal
+        return result
         
         
     
