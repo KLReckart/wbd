@@ -230,3 +230,7 @@ class TCurveTest(unittest.TestCase):
         myT = T.TCurve(self.nominalN)
         self.assertAlmostEquals(myT.f(1, 5), 0.578703704)
         
+#------------------------------------------------
+# Integrate Tests
+
+    
