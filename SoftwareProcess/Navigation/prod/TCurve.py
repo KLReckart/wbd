@@ -37,6 +37,9 @@ class TCurve(object):
         if(result > 1.0):
             raise ValueError(functionName + "result > 1.0")
         
+        #need to format output to three decimal places
+        result = float(format(round(result, 3), '0.3f'))
+        
         return result
         
 # internal methods
@@ -139,10 +142,7 @@ class TCurve(object):
         #begVal = f_IN(currentU, n_IN)
         
         result = simpsonNew
-        
-        #need to format output to two decimal places
-        result = float(format(round(result, 3), '0.3f'))
-        
+                
         return result
         
         
