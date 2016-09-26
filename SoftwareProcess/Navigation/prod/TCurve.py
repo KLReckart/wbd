@@ -71,8 +71,7 @@ class TCurve(object):
         # f is the inputted function
         # n is the variable in the given equation
         # t is the upperbound
-        
-        #so we need
+        # note: 0 is assumed to be the lower bound in this function
         
         result = 0.0
         
@@ -82,8 +81,58 @@ class TCurve(object):
         evenCoef = 4
         #odd coefficient
         oddCoef = 2
-        currentU = 0
-        begVal = f_IN(currentU, n_IN)
+        
+        epsilon = 0.001
+        simpsonOld = 0.000
+        simpsonNew = epsilon
+        slices = 4.0
+        print("(simpsonNew - simpsonOld)/simpsonNew:" + str((simpsonNew - simpsonOld)/simpsonNew))
+        while (abs((simpsonNew - simpsonOld)/simpsonNew) > epsilon):
+            simpsonOld = simpsonNew
+            w = (t - 0.0) / slices
+            #simpsonNew = (w/3) * (f_IN(0) + 4f_IN(0 + w) + 2f_IN(0 + 2w) + ... + f(t))
+            
+            #calculate the 2nd part of simpsonNew
+            
+            # currentIteration = 1 -> this value will increase by 1 for each time it iterates in the below while loop
+            #  the below loop will loop x times where x = slices
+            
+            
+            currIteration = 1
+            simpsonNewPart2 = 0.0 #initialize simpsonNewPart2
+            while(currIteration <= slices) :
+                
+                #if currentIteration = 1, then treat this as: begendCoef * f_IN(0)
+                if (currIteration == 1):
+                    simpsonNewPart2 = simpsonNewPart2 + (begendCoef * f_IN(0, self.n))
+                
+                #else-if the currentIteration != slices, identify if this needs an odd or even coefficient
+                #  treat this as: coefficient*f_IN((currentIteration - 1) * w)
+                elif (currIteration != slices):
+                    #if currIteration is divisible by 2 (meaning: currIteration % 2 = 0), then use the evenCoef
+                    if (currIteration % 2 == 0):
+                        simpsonNewPart2 = simpsonNewPart2 + (evenCoef * f_IN((currIteration - 1) * w, self.n))
+                    
+                    #else, currIteration is odd, then use oddCoef
+                    else:
+                        simpsonNewPart2 = simpsonNewPart2 + (oddCoef * f_IN((currIteration - 1) * w, self.n))
+                
+                #else (currentIteration = slices, then treat this as: begendCoef * f_IN(t))
+                else:
+                    simpsonNewPart2 = simpsonNewPart2 + (begendCoef * f_IN(t, self.n))
+                
+                #increment the current iteration
+                currIteration = currIteration + 1
+            
+            simpsonNew = (w/3.0) * simpsonNewPart2
+            
+            #multiply slices by 2 for the next while loop's simpsonNew value
+            slices = slices * 2
+        #temporary testing values below
+        #currentU = 0
+        #begVal = f_IN(currentU, n_IN)
+        
+        result = simpsonNew
         
         return result
         

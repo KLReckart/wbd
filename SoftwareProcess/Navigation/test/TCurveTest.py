@@ -238,11 +238,12 @@ class TCurveTest(unittest.TestCase):
         #myT = T.TCurve(self.nominalN)
         
         #self.assertAlmostEquals(myT.integrate())
-        
-    def test500_100_Test_begVal(self):
-        #make function return begVal to see if can input function (testingTemp) in integrate
-        myT = T.TCurve(self.nominalN)
-        self.assertEquals(myT.integrate(1, 4, myT.testingTemp), 0)
+    
+    #temporary test below, no longer valid
+#     def test500_100_Test_begVal(self):
+#         #make function return begVal to see if can input function (testingTemp) in integrate
+#         myT = T.TCurve(self.nominalN)
+#         self.assertEquals(myT.integrate(1, 4, myT.testingTemp), 0)
         
     def test500_110_Test_IntegrationWithTestingTempAsFunction(self):
         #test integration with inputting testingTemp() as input for Integration as f_IN variable
