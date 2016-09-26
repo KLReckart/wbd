@@ -249,6 +249,7 @@ class TCurveTest(unittest.TestCase):
         #test integration with inputting testingTemp() as input for Integration as f_IN variable
         myT = T.TCurve(self.nominalN)
         self.assertAlmostEquals(myT.integrate(1, 4, myT.testingTemp), 0.5, 3)
+        ##
         
         
         
