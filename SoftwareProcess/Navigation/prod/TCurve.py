@@ -38,7 +38,7 @@ class TCurve(object):
             raise ValueError(functionName + "result > 1.0")
         
         #need to format output to three decimal places
-        result = float(format(round(result, 3), '0.3f'))
+        #result = float(format(round(result, 3), '0.3f'))
         
         return result
         
