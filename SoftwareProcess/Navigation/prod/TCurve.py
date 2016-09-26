@@ -37,9 +37,6 @@ class TCurve(object):
         if(result > 1.0):
             raise ValueError(functionName + "result > 1.0")
         
-        #need to format output to three decimal places
-        #result = float(format(round(result, 3), '0.3f'))
-        
         return result
         
 # internal methods
@@ -83,7 +80,6 @@ class TCurve(object):
         # note: 0 is assumed to be the lower bound in this function
         
         result = 0.0
-        
         #beginning and end coefficient
         begendCoef = 1
         #even coefficient
@@ -105,7 +101,6 @@ class TCurve(object):
             
             # currentIteration = 1 -> this value will increase by 1 for each time it iterates in the below while loop
             #  the below loop will loop x times where x = slices
-            
             
             currIteration = 1
             simpsonNewPart2 = 0.0 #initialize simpsonNewPart2
@@ -137,9 +132,6 @@ class TCurve(object):
             
             #multiply slices by 2 for the next while loop's simpsonNew value
             slices = slices * 2
-        #temporary testing values below
-        #currentU = 0
-        #begVal = f_IN(currentU, n_IN)
         
         result = simpsonNew
                 
