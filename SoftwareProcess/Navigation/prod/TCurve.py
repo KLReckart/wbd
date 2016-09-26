@@ -64,6 +64,9 @@ class TCurve(object):
     def testingTemp(self, u, n):
         return u
     
+    def testingTemp02(self, u, n):
+        return u ** 2
+    
     def integrate(self, t, n_IN, f_IN):
         
         #note: this integrates from 0 to n -> [0, n]; b/c p() takes care of (-infinity, 0]
@@ -86,7 +89,7 @@ class TCurve(object):
         simpsonOld = 0.000
         simpsonNew = epsilon
         slices = 4.0
-        print("(simpsonNew - simpsonOld)/simpsonNew:" + str((simpsonNew - simpsonOld)/simpsonNew))
+        #print("(simpsonNew - simpsonOld)/simpsonNew:" + str((simpsonNew - simpsonOld)/simpsonNew))
         while (abs((simpsonNew - simpsonOld)/simpsonNew) > epsilon):
             simpsonOld = simpsonNew
             w = (t - 0.0) / slices
