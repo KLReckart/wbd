@@ -232,12 +232,6 @@ class TCurveTest(unittest.TestCase):
         
 #------------------------------------------------
 # Integrate Tests
-
-    #def test500_010_ShouldCalWithTN(self):
-        #test input of t and n, not worrying about inputting f yet
-        #myT = T.TCurve(self.nominalN)
-        
-        #self.assertAlmostEquals(myT.integrate())
     
     #temporary test below, no longer valid
 #     def test500_100_Test_begVal(self):
@@ -254,5 +248,36 @@ class TCurveTest(unittest.TestCase):
         #test integration with inputting testingTemp() as input for Integration as f_IN variable
         myT = T.TCurve(self.nominalN)
         self.assertAlmostEquals(myT.integrate(1, 4, myT.testingTemp02), (1.0/3.0), 3)
+        
+    def test500_110_Test_IntegrationWithTestingTempAsFunction03(self):
+        #test integration with inputting testingTemp() as input for Integration as f_IN variable
+        myT = T.TCurve(self.nominalN)
+        self.assertAlmostEquals(myT.integrate(1, 4, myT.testingTemp03), (1.0/7.0), 3)
+        
+    def test500_010_integrateTail1(self):
+        #testing a good true path
+        myT = T.TCurve(self.nominalN) #note nominalN  = 4 -> n = 4
+        #calculate expected integral result
+        # => area of top triangle + are of bottom rectangle
+        
+        #topIntVal (top value = 2)
+        topIntVal = myT.f(2.0, myT.n)
+        print("topIntVal: " + str(topIntVal))
+        #botIntVal (bot value = 0)
+        botIntVal = myT.f(0.0, myT.n)
+        print("botIntVal: " + str(botIntVal))
+        
+        #calculate the area of the top triangle
+        # a = (1/2)*base*height
+        triAngle = 0.5 * 2.0 * (botIntVal - topIntVal)
+        
+        #calculate the area of the bottom rectangle
+        recAngle = 2.0 * topIntVal
+        
+        
+        expected =  triAngle + recAngle
+        print("expected: " + str(expected))
+        
+        self.assertAlmostEquals(myT.integrate(2, 4, myT.f), expected, 2)
         
         

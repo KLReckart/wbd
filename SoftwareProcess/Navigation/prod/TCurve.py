@@ -67,12 +67,15 @@ class TCurve(object):
     def testingTemp02(self, u, n):
         return u ** 2
     
+    def testingTemp03(self, u, n):
+        return u ** 6
+    
     def integrate(self, t, n_IN, f_IN):
         
         #note: this integrates from 0 to n -> [0, n]; b/c p() takes care of (-infinity, 0]
         
-        # f is the inputted function
-        # n is the variable in the given equation
+        # f_IN is the inputted function
+        # n_IN is the variable n in the given equation
         # t is the upperbound
         # note: 0 is assumed to be the lower bound in this function
         
