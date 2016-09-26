@@ -140,6 +140,9 @@ class TCurve(object):
         
         result = simpsonNew
         
+        #need to format output to two decimal places
+        result = float(format(round(result, 3), '0.3f'))
+        
         return result
         
         
