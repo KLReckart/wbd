@@ -196,3 +196,21 @@ class AngleTest(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             angle1.compare();
         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
+        
+    #test setDegreesAndMinutes() returns correct values
+    def test_095_setDegreesAndMinutesReturn01(self):
+        #create angle1
+        angle1 = A.Angle()
+        result = angle1.setDegreesAndMinutes("45d0.0")
+        self.assertEquals(45.0, result)
+    def test_096_setDegreesAndMinutesReturnFloat(self):
+        angle1 = A.Angle()
+        result = angle1.setDegreesAndMinutes("45d0.0")
+        self.assertIsInstance(result, float, "float?")
+    def test_097_setDegreesAndMinutesReturn02(self):
+        #create angle1
+        angle1 = A.Angle()
+        result = angle1.setDegreesAndMinutes("0d30.0")
+        self.assertEquals(0.5, result)
+    #def test_098_setDegreesAndMinutesReturn03(self):
+        

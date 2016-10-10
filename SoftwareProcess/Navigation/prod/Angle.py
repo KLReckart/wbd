@@ -85,6 +85,7 @@ class Angle():
         pass
     
     def setDegreesAndMinutes(self, angleString):
+        result = 0.0
         #if the input is valid, set angleValue
         if self.checkAngleString(angleString) == True:
             splitString = angleString.split('d')
@@ -103,12 +104,13 @@ class Angle():
             
             #convert the degrees and mins to degree decimal
             # divide mins by 60 and then add to degrees
-            self.angleInDegree = (DM_min / 60.0) + DM_degree
+            result = (DM_min / 60.0) + DM_degree
+            self.angleInDegree = result
             
             pass
             
         
-        pass
+        return result
     
     def add(self, angleIN=None):
         if(angleIN == None):
