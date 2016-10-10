@@ -1,7 +1,7 @@
 class Angle():
     def __init__(self):
         #self.angle = ...       set to 0 degrees 0 minutes
-        self.angleInDegree = 0
+        self.angleInDegree = 0.0
         #self.mins = 0.0
         pass
     
@@ -44,7 +44,7 @@ class Angle():
                 raise ValueError("Angle.checkAngleString:  the angleString must have an integer or float value after 'd'")
             else:
                 #check that this int of float is positive, it needs to be
-                if self.num(splitStringList[1]) < 0 :
+                if self.num(splitStringList[1]) < 0.0 :
                     result = False
                     raise ValueError("Angle.checkAngleString:  the angleString must have a positive value after 'd'")
                     pass
@@ -56,11 +56,11 @@ class Angle():
     #KLR's made function
     # Purpose: return minutes of an enter degree
     def getMinsOfDegree(self, degreeIN):
-        result = (degreeIN - int(degreeIN)) * 60
+        result = (degreeIN - int(degreeIN)) * 60.0
         #print("mins: " + str(degreeIN) + "->" + str(result))
         return result
     
-    def setDegrees(self, degrees=0):
+    def setDegrees(self, degrees=0.0):
         #default to zero if no numerical value 
         
         #raise an error if the degrees value is neither an int nor float
@@ -68,12 +68,12 @@ class Angle():
             raise ValueError("Angle.setDegrees:  the value entered for 'degrees' needs to be an integer or float")
         else:        
             #if degrees is negative, convert to positive
-            while degrees < 0 :
-                degrees = degrees + 360
+            while degrees < 0.0 :
+                degrees = degrees + 360.0
                 pass
             #if degree is .G.R. 360, subtract until .L.E. 360
-            while degrees > 360 :
-                degrees = degrees - 360
+            while degrees > 360.0 :
+                degrees = degrees - 360.0
                 pass
             
             #set angleValue
@@ -97,67 +97,73 @@ class Angle():
             #print "num2: " + str(num2)
             
             #get degrees (num1 modulo 360)
-            DM_degree = num1 % 360
+            DM_degree = num1 % 360.0
             #get mins (num2 modulo 60)
-            DM_min = num2 % 60
+            DM_min = num2 % 60.0
             
             #convert the degrees and mins to degree decimal
             # divide mins by 60 and then add to degrees
-            self.angleInDegree = (DM_min / 60) + DM_degree
+            self.angleInDegree = (DM_min / 60.0) + DM_degree
             
             pass
             
         
         pass
     
-    def add(self, angleIN):
+    def add(self, angleIN=None):
+        if(angleIN == None):
+            raise ValueError("Angle.add:  the value entered for 'angleIN' needs to be an non-empty value")
         #raise an error if the angleIN value is not an instance of class Angle
-        if(not(isinstance(angleIN, Angle)) and not(isinstance(angleIN, Angle))):
+        elif(not(isinstance(angleIN, Angle)) and not(isinstance(angleIN, Angle))):
             raise ValueError("Angle.add:  the value entered for 'angleIN' needs to be an instance of Angle")
         else: 
         
             #add the two degrees
             sumVal = self.angleInDegree + angleIN.angleInDegree
             #if the result is Less Than 0, add 360 until .G.E. 0
-            while sumVal < 0 :
-                sumVal = sumVal + 360
+            while sumVal < 0.0 :
+                sumVal = sumVal + 360.0
                 pass
             #if the result is Greater Than360, subtract until .L.E. 360
-            while sumVal > 360 :
-                sumVal = sumVal - 360
+            while sumVal > 360.0 :
+                sumVal = sumVal - 360.0
                 pass
             #save the result to self.angleInDegree
             self.angleInDegree = sumVal
-            #return the formatted result (format = first digit after decimal)
+            #return the result
             pass
-        return format(sumVal, '0.1f')
+        return sumVal
         
     
-    def subtract(self, angleIN):
+    def subtract(self, angleIN=None):
+        if(angleIN == None):
+            raise ValueError("Angle.subtract:  the value entered for 'angleIN' needs to be an non-empty value")
         #raise an error if the angleIN value is not an instance of class Angle
-        if(not(isinstance(angleIN, Angle)) and not(isinstance(angleIN, Angle))):
+        elif(not(isinstance(angleIN, Angle)) and not(isinstance(angleIN, Angle))):
             raise ValueError("Angle.subtract:  the value entered for 'angleIN' needs to be an instance of Angle")
         else: 
         
             #subtract the two degrees
             diffVal = self.angleInDegree - angleIN.angleInDegree
             #if the result is Less Than 0, add 360 until .G.E. 0
-            while diffVal < 0 :
-                diffVal = diffVal + 360
+            while diffVal < 0.0 :
+                diffVal = diffVal + 360.0
                 pass
             #if the result is Greater Than360, subtract until .L.E. 360
-            while diffVal > 360 :
-                diffVal = diffVal - 360
+            while diffVal > 360.0 :
+                diffVal = diffVal - 360.0
                 pass
             #save the result to self.angleInDegree
             self.angleInDegree = diffVal
-            #return the formatted result (format = first digit after decimal)
+            #return the result
             pass
-        return format(diffVal, '0.1f')
+        return diffVal
     
-    def compare(self, angleIN):
+    def compare(self, angleIN=None):
+        if(angleIN == None):
+            raise ValueError("Angle.compare:  the value entered for 'angleIN' needs to be an non-empty value")
         #raise an error if the angleIN value is not an instance of class Angle
-        if(not(isinstance(angleIN, Angle)) and not(isinstance(angleIN, Angle))):
+        elif(not(isinstance(angleIN, Angle)) and not(isinstance(angleIN, Angle))):
             raise ValueError("Angle.compare:  the value entered for 'angleIN' needs to be an instance of Angle")
         else:
         
@@ -168,11 +174,11 @@ class Angle():
             # there is no need to ensure this range here
         
             if self.angleInDegree < angleIN.angleInDegree:
-                result = -1
+                result = -1.0
             elif self.angleInDegree > angleIN.angleInDegree:
-                result = +1
+                result = +1.0
             else:
-                result = 0
+                result = 0.0
                 pass
             pass
         return result

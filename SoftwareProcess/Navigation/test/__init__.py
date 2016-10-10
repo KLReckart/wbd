@@ -1,3 +1,4 @@
+import unittest
 import Navigation.prod.Angle as A
 
 #def main():
@@ -156,3 +157,42 @@ except ValueError as e:
 #def testgetDegree():
     
     #pass
+    
+class AngleTest(unittest.TestCase):    
+    #test return type is float for: add and subtract
+    def test_090_AddShouldReturnFloat(self):
+        #create angle1
+        angle1 = A.Angle(); 
+        #create angle2
+        angle2 = A.Angle();
+        #check that the return for add() is a float
+        result = angle1.add(angle2);
+        self.assertIsInstance(result, float);
+    def test_091_SubShouldReturnFloat(self):
+        #create angle1
+        angle1 = A.Angle(); 
+        #create angle2
+        angle2 = A.Angle();
+        #check that the return for aubtract() is a float
+        result = angle1.subtract(angle2);
+        self.assertIsInstance(result, float);
+    
+    #test error raised for null inputs for: add, subtract, and compare
+    def test_092_AddNullInputError(self):
+        expectedString = "Angle.add:  the value entered for 'angleIN' needs to be an non-empty value";
+        angle1 = A.Angle();
+        with self.assertRaises(ValueError) as context:
+            angle1.add();
+        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
+    def test_093_SubNullInputError(self):
+        expectedString = "Angle.subtract:  the value entered for 'angleIN' needs to be an non-empty value";
+        angle1 = A.Angle();
+        with self.assertRaises(ValueError) as context:
+            angle1.subtract();
+        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
+    def test_094_CompNullInputError(self):
+        expectedString = "Angle.compare:  the value entered for 'angleIN' needs to be an non-empty value";
+        angle1 = A.Angle();
+        with self.assertRaises(ValueError) as context:
+            angle1.compare();
+        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
