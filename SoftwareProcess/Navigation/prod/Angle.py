@@ -106,7 +106,9 @@ class Angle():
             # divide mins by 60 and then add to degrees
             result = (DM_min / 60.0) + DM_degree
             self.angleInDegree = result
-            
+        
+        elif self.checkAngleString(angleString) == False:
+            raise ValueError("Angle.setDegreesAndMinutes:  the angleString must be a valid input, please look at previous error messages")
             pass
             
         

@@ -212,5 +212,11 @@ class AngleTest(unittest.TestCase):
         angle1 = A.Angle()
         result = angle1.setDegreesAndMinutes("0d30.0")
         self.assertEquals(0.5, result)
-    #def test_098_setDegreesAndMinutesReturn03(self):
+    def test_098_setDegreesAndMinutesReturn02(self):
+        expectedString = "Angle.setDegreesAndMinutes:  the angleString must be a valid input, please look at previous error messages"
+        #create angle1
+        angle1 = A.Angle()
+        with self.assertRaises(ValueError) as context:
+            result = angle1.setDegreesAndMinutes("030.0")
+        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
         
