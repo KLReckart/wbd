@@ -26,30 +26,44 @@ class Angle():
         countD = angleString.count("d")
         if countD > 1 :
             result = False
-            raise ValueError("Angle.checkAngleString:  the angleString has too many 'd's")
+            #raise ValueError("Angle.checkAngleString:  the angleString has too many 'd's")
         elif countD < 1 :
             result = False
-            raise ValueError("Angle.checkAngleString:  the angleString lacks a 'd'")
+            #raise ValueError("Angle.checkAngleString:  the angleString lacks a 'd'")
         else :
         #b/c the next few checks are dependent of the 'd' being in the string, these checks need to be done if countD = 1
             splitStringList = angleString.split("d")
             # does angleString have a digit before 'd'
             if(not(isinstance(self.num(splitStringList[0]), int))):
                 result = False
-                raise ValueError("Angle.checkAngleString:  the angleString must have an integer value before 'd'")
+                #raise ValueError("Angle.checkAngleString:  the angleString must have an integer value before 'd'")
                 pass
-            # does angleString have a digit after 'd'
-            if(not(isinstance(self.num(splitStringList[1]), int)) and not(isinstance(self.num(splitStringList[1]), float))):
+            # does angleString have anything after 'd'
+            if(len(splitStringList[1]) == 0):
                 result = False
-                raise ValueError("Angle.checkAngleString:  the angleString must have an integer or float value after 'd'")
+                #raise ValueError("Angle.checkAngleString:  the angleString must have an integer or float value after 'd'")
+            # does angleString have a digit or float after 'd'; test for float b/c an int can be converted to a float
+            
+            elif(not(isinstance(float(splitStringList[1]), float))):
+                result = False
+                #raise ValueError("Angle.checkAngleString:  the angleString must have an integer or float value after 'd'")
             else:
-                #check that this int of float is positive, it needs to be
+                print(float(splitStringList[1]))
+                #check that this int or float is positive, it needs to be
                 if self.num(splitStringList[1]) < 0.0 :
                     result = False
-                    raise ValueError("Angle.checkAngleString:  the angleString must have a positive value after 'd'")
+                    #raise ValueError("Angle.checkAngleString:  the angleString must have a positive value after 'd'")
                     pass
                 
                 pass
+                #check that if float, there is only one digit after "."
+                if isinstance(self.num(splitStringList[1]), float):
+                    temp = str(self.num(splitStringList[1]))
+                    splitStringList2 = temp.split(".")
+                    if len(splitStringList2[1]) > 1:
+                        result = False
+                        #raise ValueError("Angle.checkAngleString:  the angleString must have 1 digit value after '.'")
+                        pass                    
             pass
         
         return result
@@ -62,27 +76,29 @@ class Angle():
     
     def setDegrees(self, degrees=0.0):
         #default to zero if no numerical value 
-        
+        result = 0.0
         #raise an error if the degrees value is neither an int nor float
         if(not(isinstance(degrees, int)) and not(isinstance(degrees, float))):
             raise ValueError("Angle.setDegrees:  the value entered for 'degrees' needs to be an integer or float")
         else:        
+            #if is an int, convert to float
+            degrees = float(degrees)
             #if degrees is negative, convert to positive
             while degrees < 0.0 :
                 degrees = degrees + 360.0
                 pass
             #if degree is .G.R. 360, subtract until .L.E. 360
-            while degrees > 360.0 :
+            while degrees >= 360.0 :
                 degrees = degrees - 360.0
                 pass
             
             #set angleValue
             # calculate the degree value
-            self.angleInDegree = degrees
-        
+            result = degrees
+            self.angleInDegree = result
             pass
         
-        pass
+        return result
     
     def setDegreesAndMinutes(self, angleString):
         result = 0.0
@@ -106,13 +122,16 @@ class Angle():
             # divide mins by 60 and then add to degrees
             result = (DM_min / 60.0) + DM_degree
             self.angleInDegree = result
+            
+            return result
         
         elif self.checkAngleString(angleString) == False:
             raise ValueError("Angle.setDegreesAndMinutes:  the angleString must be a valid input, please look at previous error messages")
+            #for more info on specific input error, un-comment raises in the function checkAngleString()
             pass
             
         
-        return result
+        pass
     
     def add(self, angleIN=None):
         if(angleIN == None):
@@ -129,7 +148,7 @@ class Angle():
                 sumVal = sumVal + 360.0
                 pass
             #if the result is Greater Than360, subtract until .L.E. 360
-            while sumVal > 360.0 :
+            while sumVal >= 360.0 :
                 sumVal = sumVal - 360.0
                 pass
             #save the result to self.angleInDegree
@@ -154,7 +173,7 @@ class Angle():
                 diffVal = diffVal + 360.0
                 pass
             #if the result is Greater Than360, subtract until .L.E. 360
-            while diffVal > 360.0 :
+            while diffVal >= 360.0 :
                 diffVal = diffVal - 360.0
                 pass
             #save the result to self.angleInDegree
@@ -178,11 +197,11 @@ class Angle():
             # there is no need to ensure this range here
         
             if self.angleInDegree < angleIN.angleInDegree:
-                result = -1.0
+                result = -1
             elif self.angleInDegree > angleIN.angleInDegree:
-                result = +1.0
+                result = +1
             else:
-                result = 0.0
+                result = 0
                 pass
             pass
         return result
@@ -197,9 +216,9 @@ class Angle():
         return result
     
     def getDegrees(self):
-        #make sure the result is formatted correctly 
-        result = format(self.angleInDegree, '0.1f')
+        #make sure the result is rounded and formatted correctly
+        result = self.angleInDegree
+        #result = format(result, '0.4f')
         #change the  result from string back to a float
-        result = float(result)
-        
+        #result = float(result)
         return result

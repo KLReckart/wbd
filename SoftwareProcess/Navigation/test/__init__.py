@@ -144,8 +144,9 @@ try:
     print(myAngle.setDegreesAndMinutes("80"))
 except ValueError as e:
     print(e)
-    #pass
-    
+    pass
+
+
 #def testAngleInstance():
     
     #pass
