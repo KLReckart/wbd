@@ -97,3 +97,12 @@ LOG: 2016-10-15 16:51:05.581000 Start of log
 LOG: 2016-10-15 16:51:05.581000 Start of log
 LOG: 2016-10-15 16:51:05.596000 Start of log
 LOG: 2016-10-15 16:51:05.612000 Start of log
+LOG: 2016-10-16 10:58:01.194000 Start of log
+LOG: 2016-10-16 10:58:01.210000 Start of log
+LOG: 2016-10-16 10:58:01.220000 Start of log
+LOG: Start of sighting file: site01.xml
+LOG: 2016-10-16 10:58:01.248000 Start of log
+LOG: 2016-10-16 10:58:01.256000 Start of log
+LOG: 2016-10-16 10:58:01.272000 Start of log
+LOG: 2016-10-16 10:58:01.280000 Start of log
+LOG: 2016-10-16 10:58:01.290000 Start of log

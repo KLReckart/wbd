@@ -218,11 +218,13 @@ class Angle():
         return result
     
     def getDegrees(self):
-        #make sure the result is rounded and formatted correctly
-        result = self.angleInDegree
-        #result = format(result, '0.4f')
-        #change the  result from string back to a float
-        #result = float(result)
+        #note: the result needs to be rounded to the nearest 1/10 minute
+        # to do this: get the minute portion of self.angleInDegree
+        # round this piece, and then reunite this part with the degree portion of self.angleInDegree to get result
+        
+        minutePortion = (self.angleInDegree - int(self.angleInDegree)) * 60
+        roundedValue = round(minutePortion, 1)
+        result = int(self.angleInDegree) + (roundedValue / 60)
         return result
     
     #added 10/16/16
