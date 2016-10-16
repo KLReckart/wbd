@@ -1,5 +1,6 @@
 import unittest
 import Navigation.prod.Fix as Fix
+import Navigation.prod.Angle as Angle
 import os.path
 
 class FixTest(unittest.TestCase):
@@ -142,5 +143,19 @@ class FixTest(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             fix23.setSightingFile(siteFileName_IN)
         self.assertEquals(expectedException, context.exception.args[0][0:len(expectedException)], "error for invalid setSightingFile input not raised")
+        
+#    Acceptance Test: 300
+#        Analysis: calcAdjustedAlt(...)
+
+#    Happy path
+    def test300_010CalculatesCorrectly(self):
+        
+        #needs: height, pressure, temp, observation (AKS: observed altitude)
+        height = 6.0
+        pressure = 1010
+        temp = 72
+        observation = Angle.Angle()
+        observation.setDegreesAndMinutes("015d04.9")
+        expectedResult = "15d01.5"
         
         

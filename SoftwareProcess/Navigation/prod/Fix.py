@@ -64,3 +64,13 @@ class Fix():
         else:
             raise ValueError(funcName + ":  invalid input")
         return sightingFile
+    
+    def calcAdjustedAlt(self, heightIN=None, pressureIN=None, tempIN=None, altitudeIN=None):
+        
+        pass
+    
+    def getSightings(self):
+        
+        pass
+    
+    

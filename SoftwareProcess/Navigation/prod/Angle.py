@@ -1,3 +1,5 @@
+import math
+
 class Angle():
     def __init__(self):
         #self.angle = ...       set to 0 degrees 0 minutes
@@ -222,3 +224,16 @@ class Angle():
         #change the  result from string back to a float
         #result = float(result)
         return result
+    
+    #added 10/16/16
+    def tangent(self):
+        #get the angle in degrees with self.getDegrees()
+        angleInDegrees = self.getDegrees()
+        #convert the degrees to radians with math.radians(degreesIN)
+        angleInRadians = math.radians(angleInDegrees)
+        #math.tan(angle) where angle is in radians
+        result = math.tan(angleInRadians)
+        #convert radians to degrees with degrees(radiansIN)
+        result = math.degrees(result)
+        return result
+    
