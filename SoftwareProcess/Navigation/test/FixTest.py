@@ -29,7 +29,7 @@ class FixTest(unittest.TestCase):
             print(lineInFile)
             self.assertEquals(lineInFile[:5], expectedBeg, "file01 missing 'LOG: '")
             self.assertEquals(lineInFile[-13:], expectedEnd, "file01 missing 'Start of log'")
-            
+             
     def test100_011CreateWithInput(self):
         fix02 = Fix.Fix("log02.txt")
         #check that the object was created
@@ -46,7 +46,7 @@ class FixTest(unittest.TestCase):
             print(lineInFile)
             self.assertEquals(lineInFile[:5], expectedBeg, "file02 missing 'LOG: '")
             self.assertEquals(lineInFile[-13:], expectedEnd, "file02 missing 'Start of log'")
-            
+             
     def test100_012AppendToEExistingFile(self):
         fix03 = Fix.Fix()
         #get the 2nd line of the file, check that line
@@ -59,7 +59,7 @@ class FixTest(unittest.TestCase):
         print(lineInFile02)
         self.assertEquals(lineInFile02[:5], expectedBeg, "file02 missing 'LOG: '")
         self.assertEquals(lineInFile02[-13:], expectedEnd, "file02 missing 'Start of log'")
-
+ 
 #   Sad path
     def test100_110FailInitialEmptyString(self):
         expectedDia = "Fix.__init__:  invalid input"
@@ -71,6 +71,76 @@ class FixTest(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             fix05 = Fix.Fix(55)
         self.assertEquals(expectedDia, context.exception.args[0][0:len(expectedDia)], "error for number input not raised")
+    
+    #FOR BELOW TEST, must change file01 = open(logFile, "a") to file01 = open(logFile, "w")
+#     def test100_912FailToCreateFile(self):
+#         expectedDia = "Fix.__init__:  failed to create or append file"
+#         with self.assertRaises(ValueError) as context:
+#             fix06 = Fix.Fix("test")
+#         self.assertEquals(expectedDia, context.exception.args[0][0:len(expectedDia)], "error for file creating not raised")
+#         
+     
+     
+#    Acceptance Test: 200
+#        Analysis: setSightingFile()
+
+#    Happy Path
+    def test200_010ReturnString(self):
+        fix20 = Fix.Fix()
+        siteName_IN = "site01.xml"
+        result01 = fix20.setSightingFile(siteName_IN)
+        result02 = fix20.getSiteFileName()
+        self.assertEquals(result01, siteName_IN, "site01.xml was not returned for fix20.setSightingFile(...)")
+        self.assertEquals(result02, siteName_IN, "site01.xml was not returned for fix20.getSiteFileName()")
         
+    def test200_011LineInFile(self):
+        fix21 = Fix.Fix("log20.txt")
+        siteFileName_IN = "site01.xml"
+        fix21.setSightingFile(siteFileName_IN)
+        #open the log file for reading
+        logFile = open("log20.txt", "r")
+        #position the read pointer to the last line
+        logFile.seek(-41, 2)
+        #get the line as a string
+        lastLine = logFile.readline()
+        print("lastLine: " + lastLine)
+        #set expectedString
+        expectedStringBeg = "LOG: "
+        expectedStringEnd = "Start of sighting file: " + siteFileName_IN + "\n"
+        self.assertEquals(lastLine[:5], expectedStringBeg, "log20.txt missing 'LOG: '")
+        self.assertEquals(lastLine[-35:], expectedStringEnd, "log20.txt missing 'Start of sighting file: " + siteFileName_IN + "'")
+        
+#    Sad Path
+    def test200_900LacksFileExt(self):
+        fix22 = Fix.Fix()
+        siteFileName_IN = "site01"
+        expectedException = "Fix.setSightingFile:  invalid input"
+        with self.assertRaises(ValueError) as context:
+            fix22.setSightingFile(siteFileName_IN)
+        self.assertEquals(expectedException, context.exception.args[0][0:len(expectedException)], "error for invalid setSightingFile input not raised")
+        
+    def test200_901NonStringInput(self):
+        fix22 = Fix.Fix()
+        siteFileName_IN = 55
+        expectedException = "Fix.setSightingFile:  invalid input"
+        with self.assertRaises(ValueError) as context:
+            fix22.setSightingFile(siteFileName_IN)
+        self.assertEquals(expectedException, context.exception.args[0][0:len(expectedException)], "error for invalid setSightingFile input not raised")
+        
+    def test200_902NullInput(self):
+        fix22 = Fix.Fix()
+        siteFileName_IN = None
+        expectedException = "Fix.setSightingFile:  invalid input"
+        with self.assertRaises(ValueError) as context:
+            fix22.setSightingFile(siteFileName_IN)
+        self.assertEquals(expectedException, context.exception.args[0][0:len(expectedException)], "error for invalid setSightingFile input not raised")
+        
+    def test200_903SightingFileNotInDir(self):
+        fix23 = Fix.Fix()
+        siteFileName_IN = "site.xml"
+        expectedException = "Fix.setSightingFile:  sighting file does not exist in current directory"
+        with self.assertRaises(ValueError) as context:
+            fix23.setSightingFile(siteFileName_IN)
+        self.assertEquals(expectedException, context.exception.args[0][0:len(expectedException)], "error for invalid setSightingFile input not raised")
         
         
