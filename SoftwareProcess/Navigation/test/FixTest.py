@@ -155,11 +155,12 @@ class FixTest(unittest.TestCase):
         pressure = 1010
         temp = 72
         observation = "015d04.9"
+        horizon = "artificial"
         #observation = Angle.Angle()
         #observation.setDegreesAndMinutes("015d04.9")
         expectedResult = "15d01.5"
         fix30 = Fix.Fix()
-        result = fix30.calcAdjustedAlt(height, pressure, temp, observation)
-        self.assertEquals(result, expectedResult, "error in calculating Adjusted Altitude")
+        result = fix30.calcAdjustedAlt(height, pressure, temp, observation, horizon)
+        self.assertEquals(result, expectedResult, (str(result) + " != " + str(expectedResult)))
         
         

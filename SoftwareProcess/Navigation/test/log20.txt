@@ -22,3 +22,9 @@ LOG: 2016-10-15 16:51:05.565000 Start of log
 LOG: Start of sighting file: site01.xml
 LOG: 2016-10-16 10:58:01.235000 Start of log
 LOG: Start of sighting file: site01.xml
+LOG: 2016-10-16 12:51:03.344000 Start of log
+LOG: Start of sighting file: site01.xml
+LOG: 2016-10-16 12:52:02.381000 Start of log
+LOG: Start of sighting file: site01.xml
+LOG: 2016-10-16 12:52:58.736000 Start of log
+LOG: Start of sighting file: site01.xml
