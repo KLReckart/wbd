@@ -1,6 +1,5 @@
 import unittest
 import Navigation.prod.Fix as Fix
-#import Navigation.prod.Angle as Angle
 import os.path
 
 class FixTest(unittest.TestCase):
