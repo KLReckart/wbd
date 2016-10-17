@@ -260,14 +260,19 @@ class AngleTest(unittest.TestCase):
         self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])  
         self.assertAlmostEquals(originalValue, anAngle.getDegrees())  
                       
-    def test400_960_ShouldRaiseExceptionOnNonintegerY(self):
-        expectedDiag = self.className + "setDegreesAndMinutes:"
+#     def test400_960_ShouldRaiseExceptionOnNonintegerY(self):
+#         expectedDiag = self.className + "setDegreesAndMinutes:"
+#         anAngle = Angle.Angle()
+#         originalValue = anAngle.getDegrees()
+#         with self.assertRaises(ValueError) as context:
+#             anAngle.setDegreesAndMinutes("10da")
+#         self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)]) 
+#         self.assertAlmostEquals(originalValue, anAngle.getDegrees())  
+
+    def test400_960_ShouldRaiseException(self):
         anAngle = Angle.Angle()
-        originalValue = anAngle.getDegrees()
-        with self.assertRaises(ValueError) as context:
-            anAngle.setDegreesAndMinutes("10da")
-        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)]) 
-        self.assertAlmostEquals(originalValue, anAngle.getDegrees())  
+        result = anAngle.checkAngleString("10da")
+        self.assertEquals(result, False, (str(result) + " != " + str(False)))
     
     def test400_970_ShouldRaiseExceptionOnMissingY(self):
         expectedDiag = self.className + "setDegreesAndMinutes:"

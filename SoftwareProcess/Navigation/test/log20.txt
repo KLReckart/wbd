@@ -1,30 +1,120 @@
-LOG: 2016-10-15 12:14:46.332000 Start of log
-LOG: Start of sighting file: site01.xml
-LOG: 2016-10-15 12:17:55.825000 Start of log
-LOG: Start of sighting file: site01.xml
-LOG: 2016-10-15 12:24:32.229000 Start of log
-LOG: Start of sighting file: site01.xml
-LOG: 2016-10-15 12:34:28.482000 Start of log
-LOG: Start of sighting file: site01.xml
-LOG: 2016-10-15 12:35:19.998000 Start of log
-LOG: Start of sighting file: site01.xml
-LOG: 2016-10-15 12:45:19.795000 Start of log
-LOG: Start of sighting file: site01.xml
-LOG: 2016-10-15 16:39:44.403000 Start of log
-LOG: Start of sighting file: site01.xml
-LOG: 2016-10-15 16:41:22.622000 Start of log
-LOG: Start of sighting file: site01.xml
-LOG: 2016-10-15 16:42:52.734000 Start of log
-LOG: Start of sighting file: site01.xml
-LOG: 2016-10-15 16:45:07.873000 Start of log
-LOG: Start of sighting file: site01.xml
-LOG: 2016-10-15 16:51:05.565000 Start of log
-LOG: Start of sighting file: site01.xml
-LOG: 2016-10-16 10:58:01.235000 Start of log
-LOG: Start of sighting file: site01.xml
-LOG: 2016-10-16 12:51:03.344000 Start of log
-LOG: Start of sighting file: site01.xml
-LOG: 2016-10-16 12:52:02.381000 Start of log
-LOG: Start of sighting file: site01.xml
-LOG: 2016-10-16 12:52:58.736000 Start of log
-LOG: Start of sighting file: site01.xml
+LOG: 2016-10-16 17:18:17.932000 Start of log
+LOG: 2016-10-16 17:18:17.932000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:20:54.819000 Start of log
+LOG: 2016-10-16 17:20:54.819000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:33:01.986000 Start of log
+LOG: 2016-10-16 17:33:01.992000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:33:42.727000 Start of log
+LOG: 2016-10-16 17:33:42.732000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:35:17.758000 Start of log
+LOG: 2016-10-16 17:35:17.764000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:44:00.998000 Start of log
+LOG: 2016-10-16 17:44:01.004000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:44:28.862000 Start of log
+LOG: 2016-10-16 17:44:28.868000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:45:23.584000 Start of log
+LOG: 2016-10-16 17:45:23.591000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:46:13.731000 Start of log
+LOG: 2016-10-16 17:46:13.749000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:46:41.491000 Start of log
+LOG: 2016-10-16 17:46:41.497000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:48:06.627000 Start of log
+LOG: 2016-10-16 17:48:06.634000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:48:53.684000 Start of log
+LOG: 2016-10-16 17:48:53.693000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:52:00.901000 Start of log
+LOG: 2016-10-16 17:52:00.908000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:53:07.447000 Start of log
+LOG: 2016-10-16 17:53:07.453000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:53:36.518000 Start of log
+LOG: 2016-10-16 17:53:36.525000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:54:32.293000 Start of log
+LOG: 2016-10-16 17:54:32.320000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:55:50.749000 Start of log
+LOG: 2016-10-16 17:55:50.756000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:57:04.345000 Start of log
+LOG: 2016-10-16 17:57:04.355000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:57:30.850000 Start of log
+LOG: 2016-10-16 17:57:30.855000 Start of sighting file: site01.xml
+LOG: 2016-10-16 17:58:00.705000 Start of log
+LOG: 2016-10-16 17:58:00.712000 Start of sighting file: site01.xml
+LOG: 2016-10-16 18:04:46.680000 Start of log
+LOG: 2016-10-16 18:04:46.685000 Start of sighting file: site01.xml
+LOG: 2016-10-16 18:35:27.056000 Start of log
+LOG: 2016-10-16 18:35:27.061000 Start of sighting file: site01.xml
+LOG: 2016-10-16 18:36:20.767000 Start of log
+LOG: 2016-10-16 18:36:20.775000 Start of sighting file: site01.xml
+LOG: 2016-10-16 18:36:58.215000 Start of log
+LOG: 2016-10-16 18:36:58.222000 Start of sighting file: site01.xml
+LOG: 2016-10-16 18:37:46.193000 Start of log
+LOG: 2016-10-16 18:37:46.200000 Start of sighting file: site01.xml
+LOG: 2016-10-16 18:38:28.837000 Start of log
+LOG: 2016-10-16 18:38:28.844000 Start of sighting file: site01.xml
+LOG: 2016-10-16 18:38:50.850000 Start of log
+LOG: 2016-10-16 18:38:50.941000 Start of sighting file: site01.xml
+LOG: 2016-10-16 18:39:21.888000 Start of log
+LOG: 2016-10-16 18:39:21.895000 Start of sighting file: site01.xml
+LOG: 2016-10-16 18:40:15.312000 Start of log
+LOG: 2016-10-16 18:40:15.319000 Start of sighting file: site01.xml
+LOG: 2016-10-16 18:41:06.019000 Start of log
+LOG: 2016-10-16 18:41:06.027000 Start of sighting file: site01.xml
+LOG: 2016-10-16 18:41:29.144000 Start of log
+LOG: 2016-10-16 18:41:29.153000 Start of sighting file: site01.xml
+LOG: 2016-10-16 19:43:46.163000 Start of log
+LOG: 2016-10-16 19:43:46.168000 Start of sighting file: site01.xml
+LOG: 2016-10-16 19:59:48.604000 Start of log
+LOG: 2016-10-16 19:59:48.614000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:01:05.421000 Start of log
+LOG: 2016-10-16 20:01:05.427000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:04:49.739000 Start of log
+LOG: 2016-10-16 20:04:49.745000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:34:36.655000 Start of log
+LOG: 2016-10-16 20:34:36.661000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:35:42.902000 Start of log
+LOG: 2016-10-16 20:35:42.906000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:37:19.855000 Start of log
+LOG: 2016-10-16 20:37:19.862000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:38:56.095000 Start of log
+LOG: 2016-10-16 20:38:56.102000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:40:37.974000 Start of log
+LOG: 2016-10-16 20:40:37.979000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:41:43.730000 Start of log
+LOG: 2016-10-16 20:41:43.736000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:42:42.345000 Start of log
+LOG: 2016-10-16 20:42:42.352000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:01:21.978000 Start of log
+LOG: 2016-10-16 21:01:21.984000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:03:38.046000 Start of log
+LOG: 2016-10-16 21:03:38.052000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:14:12.207000 Start of log
+LOG: 2016-10-16 21:14:12.213000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:15:52.341000 Start of log
+LOG: 2016-10-16 21:15:52.347000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:19:55.528000 Start of log
+LOG: 2016-10-16 21:19:55.537000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:20:25.078000 Start of log
+LOG: 2016-10-16 21:20:25.087000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:30:28.527000 Start of log
+LOG: 2016-10-16 21:30:28.535000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:31:15.184000 Start of log
+LOG: 2016-10-16 21:31:15.198000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:31:45.388000 Start of log
+LOG: 2016-10-16 21:31:45.396000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:32:52.453000 Start of log
+LOG: 2016-10-16 21:32:52.459000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:33:17.181000 Start of log
+LOG: 2016-10-16 21:33:17.190000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:34:48.832000 Start of log
+LOG: 2016-10-16 21:34:48.841000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:36:48.706000 Start of log
+LOG: 2016-10-16 21:36:48.715000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:41:41.714000 Start of log
+LOG: 2016-10-16 21:41:41.721000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:47:18.572000 Start of log
+LOG: 2016-10-16 21:47:18.581000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:48:20.951000 Start of log
+LOG: 2016-10-16 21:48:20.957000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:50:41.681000 Start of log
+LOG: 2016-10-16 21:50:41.687000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:54:43.398000 Start of log
+LOG: 2016-10-16 21:54:43.405000 Start of sighting file: site01.xml

@@ -1,0 +1,11 @@
+LOG: 2016-10-16 21:47:18.758000 Start of log
+LOG: 2016-10-16 21:47:18.764000 Start of sighting file: site02.xml
+LOG: 2016-10-16 21:48:21.152000 Start of log
+LOG: 2016-10-16 21:48:21.158000 Start of sighting file: site02.xml
+LOG: 2016-10-16 21:48:21.162000 None	None	None	
+LOG: 2016-10-16 21:50:41.820000 Start of log
+LOG: 2016-10-16 21:50:41.826000 Start of sighting file: site02.xml
+LOG: 2016-10-16 21:50:41.830000 None	None	None	
+LOG: 2016-10-16 21:54:43.552000 Start of log
+LOG: 2016-10-16 21:54:43.579000 Start of sighting file: site02.xml
+LOG: 2016-10-16 21:54:43.584000 None	None	None	

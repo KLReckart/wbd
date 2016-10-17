@@ -1,0 +1,67 @@
+LOG: 2016-10-16 19:43:46.241000 Start of log
+LOG: 2016-10-16 19:43:46.246000 Start of sighting file: site01.xml
+LOG: 2016-10-16 19:59:48.695000 Start of log
+LOG: 2016-10-16 19:59:48.700000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:01:05.523000 Start of log
+LOG: 2016-10-16 20:01:05.528000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:04:49.823000 Start of log
+LOG: 2016-10-16 20:04:49.828000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:34:36.734000 Start of log
+LOG: 2016-10-16 20:34:36.738000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:35:43.020000 Start of log
+LOG: 2016-10-16 20:35:43.025000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:37:19.952000 Start of log
+LOG: 2016-10-16 20:37:19.959000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:38:56.189000 Start of log
+LOG: 2016-10-16 20:38:56.196000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:40:38.054000 Start of log
+LOG: 2016-10-16 20:40:38.059000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:41:43.832000 Start of log
+LOG: 2016-10-16 20:41:43.840000 Start of sighting file: site01.xml
+LOG: 2016-10-16 20:42:42.447000 Start of log
+LOG: 2016-10-16 20:42:42.455000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:01:22.076000 Start of log
+LOG: 2016-10-16 21:01:22.084000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:03:38.134000 Start of log
+LOG: 2016-10-16 21:03:38.140000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:14:12.327000 Start of log
+LOG: 2016-10-16 21:14:12.338000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:14:12.345000 Aldebaran	2016-03-01	015d04.9	15d4.8LOG: 2016-10-16 21:15:52.481000 Start of log
+LOG: 2016-10-16 21:15:52.489000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:15:52.497000 Aldebaran	2016-03-01	015d04.9	15d4.8LOG: 2016-10-16 21:19:55.629000 Start of log
+LOG: 2016-10-16 21:19:55.636000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:19:55.644000 Aldebaran	2016-03-01	015d04.9	15d4.8LOG: 2016-10-16 21:20:25.216000 Start of log
+LOG: 2016-10-16 21:20:25.223000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:20:25.229000 Aldebaran	2016-03-01	015d04.9	15d4.8LOG: 2016-10-16 21:30:28.685000 Start of log
+LOG: 2016-10-16 21:30:28.693000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:30:28.698000 Aldebaran	2016-03-01	015d04.9	15d4.8LOG: 2016-10-16 21:31:15.350000 Start of log
+LOG: 2016-10-16 21:31:15.358000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:31:15.363000 Aldebaran	2016-03-01	015d04.9	15d4.8LOG: 2016-10-16 21:31:45.525000 Start of log
+LOG: 2016-10-16 21:31:45.532000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:31:45.537000 Aldebaran	2016-03-01	015d04.9	15d4.8LOG: 2016-10-16 21:32:52.595000 Start of log
+LOG: 2016-10-16 21:32:52.603000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:32:52.609000 Aldebaran	2016-03-01	015d04.9	15d4.8
+LOG: 2016-10-16 21:33:17.349000 Start of log
+LOG: 2016-10-16 21:33:17.357000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:33:17.363000 Aldebaran	2016-03-01	015d04.9	15d4.8
+LOG: 2016-10-16 21:34:48.975000 Start of log
+LOG: 2016-10-16 21:34:48.984000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:34:48.989000 Aldebaran	2016-03-01	23:40:01	15d4.8
+LOG: 2016-10-16 21:36:48.875000 Start of log
+LOG: 2016-10-16 21:36:48.884000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:36:48.890000 Aldebaran	2016-03-01	23:40:01	15d4.8
+LOG: 2016-10-16 21:41:41.875000 Start of log
+LOG: 2016-10-16 21:41:41.883000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:41:41.888000 Aldebaran	2016-03-01	23:40:01	15d4.8
+LOG: 2016-10-16 21:47:18.770000 Start of log
+LOG: 2016-10-16 21:47:18.778000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:47:18.784000 Aldebaran	2016-03-01	23:40:01	15d4.8
+LOG: 2016-10-16 21:48:21.166000 Start of log
+LOG: 2016-10-16 21:48:21.172000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:48:21.179000 Aldebaran	2016-03-01	23:40:01	15d4.8
+LOG: 2016-10-16 21:50:41.835000 Start of log
+LOG: 2016-10-16 21:50:41.842000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:50:41.847000 Aldebaran	2016-03-01	23:40:01	15d4.8
+LOG: 2016-10-16 21:54:43.588000 Start of log
+LOG: 2016-10-16 21:54:43.595000 Start of sighting file: site01.xml
+LOG: 2016-10-16 21:54:43.601000 Aldebaran	2016-03-01	23:40:01	15d4.8

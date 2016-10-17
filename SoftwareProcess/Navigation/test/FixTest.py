@@ -1,6 +1,6 @@
 import unittest
 import Navigation.prod.Fix as Fix
-import Navigation.prod.Angle as Angle
+#import Navigation.prod.Angle as Angle
 import os.path
 
 class FixTest(unittest.TestCase):
@@ -27,7 +27,7 @@ class FixTest(unittest.TestCase):
         if (os.path.isfile(file01Name) == True):
             file01 = open(file01Name, "r")
             lineInFile = file01.readline()
-            print(lineInFile)
+            #print(lineInFile)
             self.assertEquals(lineInFile[:5], expectedBeg, "file01 missing 'LOG: '")
             self.assertEquals(lineInFile[-13:], expectedEnd, "file01 missing 'Start of log'")
              
@@ -44,7 +44,7 @@ class FixTest(unittest.TestCase):
         if (os.path.isfile(file02Name) == True):
             file02 = open(file02Name, "r")
             lineInFile = file02.readline()
-            print(lineInFile)
+            #print(lineInFile)
             self.assertEquals(lineInFile[:5], expectedBeg, "file02 missing 'LOG: '")
             self.assertEquals(lineInFile[-13:], expectedEnd, "file02 missing 'Start of log'")
              
@@ -57,7 +57,7 @@ class FixTest(unittest.TestCase):
         file03 = open(file03Name, "r")
         lineInFile = file03.readline()
         lineInFile02 = file03.readline()
-        print(lineInFile02)
+        #print(lineInFile02)
         self.assertEquals(lineInFile02[:5], expectedBeg, "file02 missing 'LOG: '")
         self.assertEquals(lineInFile02[-13:], expectedEnd, "file02 missing 'Start of log'")
  
@@ -100,16 +100,25 @@ class FixTest(unittest.TestCase):
         fix21.setSightingFile(siteFileName_IN)
         #open the log file for reading
         logFile = open("log20.txt", "r")
-        #position the read pointer to the last line
-        logFile.seek(-41, 2)
-        #get the line as a string
-        lastLine = logFile.readline()
-        print("lastLine: " + lastLine)
+        #get the 2nd to last line as a string
+        secondTolastLine = ""
+        numOfLines = 0
+        for line in logFile:
+            numOfLines = numOfLines + 1
+        position = logFile.seek(0, 0)
+        currentLine = 0
+        for line2 in logFile:
+            if (currentLine == numOfLines - 1):
+                secondTolastLine = line2
+            #print "line#: " + str(currentLine)
+            #print "line2: " + line2
+            currentLine = currentLine + 1
+        #print("secondTolastLine: " + secondTolastLine)
         #set expectedString
         expectedStringBeg = "LOG: "
         expectedStringEnd = "Start of sighting file: " + siteFileName_IN + "\n"
-        self.assertEquals(lastLine[:5], expectedStringBeg, "log20.txt missing 'LOG: '")
-        self.assertEquals(lastLine[-35:], expectedStringEnd, "log20.txt missing 'Start of sighting file: " + siteFileName_IN + "'")
+        self.assertEquals(secondTolastLine[:5], expectedStringBeg, (secondTolastLine[:5] + " ! =" + expectedStringBeg))
+        self.assertEquals(secondTolastLine[-35:], expectedStringEnd, "log20.txt missing 'Start of sighting file: " + siteFileName_IN + "'")
         
 #    Sad Path
     def test200_900LacksFileExt(self):
@@ -162,5 +171,91 @@ class FixTest(unittest.TestCase):
         fix30 = Fix.Fix()
         result = fix30.calcAdjustedAlt(height, pressure, temp, observation, horizon)
         self.assertEquals(result, expectedResult, (str(result) + " != " + str(expectedResult)))
+        
+#    Acceptance Test: 400
+#        Analysis: getSightings(...)
+
+#    Happy path
+    def test400_010ReturnssTuple(self):
+        fix40 = Fix.Fix()
+        logFileName = fix40.setSightingFile("site01.xml")
+        result = fix40.getSightings()
+        self.assertEquals(result, (0, 0), str(result) + " != (0, 0)")
+        
+    def test400_011CheckLastLineInLog(self):
+        expectBeg = "LOG: "
+        expectEnd = "End of sighting file: site01.xml\n"
+        logFileNameIN = "log40.txt"
+        fix41 = Fix.Fix(logFileNameIN)
+        logFileName = fix41.setSightingFile("site01.xml")
+        getResult = fix41.getSightings()
+        logFile = open(logFileNameIN, "r")
+        #get the 2nd to last line as a string, last line = "" b/c of "\n"
+        secondTolastLine = ""
+        numOfLines = 0
+        for line in logFile:
+            numOfLines = numOfLines + 1
+        position = logFile.seek(0, 0)
+        currentLine = 0
+        for line2 in logFile:
+            if (currentLine == numOfLines - 1):
+                secondTolastLine = line2
+            #print "line#: " + str(currentLine)
+            #print "line2: " + line2
+            currentLine = currentLine + 1
+        self.assertEquals(secondTolastLine[:5], expectBeg, (secondTolastLine[:5] + " ! =" + expectBeg))
+        self.assertEquals(secondTolastLine[-33:], expectEnd, (secondTolastLine[-33:] + " != " + expectEnd))
+        
+    def test400_011wroteCorrectValuesToLog(self):
+        expected = "LOG: 2016-10-01 10:01:10-06:00 Aldebaran\t2016-03-01\t23:40:01\t15d01.5"
+        expectedEnd = "Aldebaran\t2016-03-01\t23:40:01\t15d01.5"
+        logFileNameIN = "log42.txt"
+        fix41 = Fix.Fix(logFileNameIN)
+        logFileName = fix41.setSightingFile("site01.xml")
+        getResult = fix41.getSightings()
+        logFile = open(logFileNameIN, "r")
+        #get 3rd to last line for testing
+        result = ""
+        numOfLines = 0
+        for line in logFile:
+            numOfLines = numOfLines + 1
+        position = logFile.seek(0, 0)
+        currentLine = 0
+        for line2 in logFile:
+            if (currentLine == numOfLines - 2):
+                result = line2
+            #print "line#: " + str(currentLine)
+            #print "line2: " + line2
+            currentLine = currentLine + 1
+        #42, 39
+        self.assertEquals(result[-38:], expectedEnd, (result[-38:] + " != " + expectedEnd))
+        
+#   Sad path
+    def test400_910DidNotSetXML(self):
+        expected = "Fix.getSightings:  site file is not set or invalid"
+        fix49 = Fix.Fix()
+        with self.assertRaises(ValueError) as context:
+            result = fix49.getSightings()
+        self.assertEquals(expected, context.exception.args[0][0:len(expected)], expected + " != " + context.exception.args[0][0:len(expected)])
+    
+    def test400_911LacksMandatoryData(self):
+        expected = "Fix.getSightings:  invalid xml data"
+        fix49 = Fix.Fix("log49.txt")
+        here = fix49.setSightingFile("site02.xml")
+        with self.assertRaises(ValueError) as context:
+            result = fix49.getSightings()
+        self.assertEquals(expected, context.exception.args[0][0:len(expected)], expected + " != " + context.exception.args[0][0:len(expected)])
+    
+        
+#    Acceptance Test: 500
+#        Analysis: getData(...)
+
+    def test500_010viewResults(self):
+        siteFileName = "site01.xml"
+        logFileName = "log50.txt"
+        fix50 = Fix.Fix(logFileName)
+        val01 = fix50.setSightingFile(siteFileName)
+        #test the printing of data
+        fix50.getData()
         
         

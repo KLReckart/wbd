@@ -46,7 +46,7 @@ class Angle():
                 #raise ValueError("Angle.checkAngleString:  the angleString must have an integer or float value after 'd'")
             # does angleString have a digit or float after 'd'; test for float b/c an int can be converted to a float
             
-            elif(not(isinstance(float(splitStringList[1]), float))):
+            elif(not(isinstance(self.num(splitStringList[1]), float)) and not(isinstance(self.num(splitStringList[1]), int))):
                 result = False
                 #raise ValueError("Angle.checkAngleString:  the angleString must have an integer or float value after 'd'")
             else:
@@ -104,25 +104,40 @@ class Angle():
     
     def setDegreesAndMinutes(self, angleString):
         result = 0.0
+        funcName = "Angle.setDegreesAndMinutes"
         #if the input is valid, set angleValue
-        if self.checkAngleString(angleString) == True:
+        if (angleString <> None and self.checkAngleString(angleString) == True):
             splitString = angleString.split('d')
-            
+            #print "splitString[0]: " + splitString[0]
+            #print "splitString[1]" + splitString[1]
             #get num1
-            num1 = int(splitString[0])
-            #print "num1: " + str(num1)
+            try:
+                num1 = int(splitString[0])
+                #print "num1: " + str(num1)
+            except:
+                raise ValueError(funcName + ":  invalid input")
+            
             #get num2
-            num2 = float(splitString[1])
-            #print "num2: " + str(num2)
+            try:
+                num2 = float(splitString[1])
+                #print "num2: " + str(num2)
+            except:
+                raise ValueError(funcName + ":  invalid input")
+            
             
             #get degrees (num1 modulo 360)
-            DM_degree = num1 % 360.0
+            DM_degree = abs(num1) % 360.0
+            #print "DM_ degree: " + str(DM_degree)
             #get mins (num2 modulo 60)
             DM_min = num2 % 60.0
-            
+            #print "DM_min: " + str(DM_min)
             #convert the degrees and mins to degree decimal
             # divide mins by 60 and then add to degrees
-            result = (DM_min / 60.0) + DM_degree
+            if num1 >= 0:
+                result = (DM_min / 60) + DM_degree
+            else:
+                result = 360 - ((DM_min / 60) + DM_degree)
+            
             self.angleInDegree = result
             
             return result
