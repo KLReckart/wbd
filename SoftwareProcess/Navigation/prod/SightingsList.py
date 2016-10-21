@@ -22,7 +22,11 @@ class SightingsList():
         
         #https://docs.python.org/2/howto/sorting.html#sortinghowto
         newList = sorted(self.thisList, key=attrgetter('date', 'time', 'body'))
-        
+        print "OLD LIST:\n"
+        self.printSightingsList()
+        self.thisList = newList
+        print "NEW LIST:\n"
+        self.printSightingsList()
         pass
     
     def sortKeyByDate(self, sightingIN):
