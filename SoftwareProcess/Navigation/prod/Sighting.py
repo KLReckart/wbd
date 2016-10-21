@@ -46,3 +46,8 @@ class Sighting():
         self.pressure = pressureIN
     def setHorizon(self, horizonIN):
         self.horizon = horizonIN
+    def printSighting(self):
+        stringToPrint = (str(self.body) + "\t" + str(self.date) + "\t" + str(self.time) + "\t" + str(self.observation) + "\t"
+                         + str(self.height) + "\t" + str(self.temp) + "\t" + str(self.pressure) + "\t" + str(self.horizon))
+        print stringToPrint + "\n*****\n"
+        pass

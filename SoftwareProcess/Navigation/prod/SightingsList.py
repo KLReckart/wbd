@@ -1,4 +1,5 @@
 import Navigation.prod.Sighting as Sighting
+from operator import attrgetter
 
 class SightingsList():
     
@@ -18,5 +19,33 @@ class SightingsList():
         pass
     
     def sortSightingsList(self):
+        
+        #https://docs.python.org/2/howto/sorting.html#sortinghowto
+        newList = sorted(self.thisList, key=attrgetter('date', 'time', 'body'))
+        
+        pass
+    
+    def sortKeyByDate(self, sightingIN):
+        if isinstance(sightingIN, Sighting)  == True:
+            result = sightingIN.getDate()
+        return result
+    
+    def sortKeyByTime(self, sightingIN):
+        if isinstance(sightingIN, Sighting) == True:
+            result = sightingIN.getTime()
+        return result
+    
+    def sortKeyByBody(self, sightingIN):
+        if isinstance(sightingIN, Sighting) == True:
+            result = sightingIN.getBody()
+        return result
+    
+    def printSightingsList(self):
+        #for each sighting in the list, print it
+        indexValue = 1
+        for aSighting in self.thisList:
+            print str(indexValue) + "\n"
+            aSighting.printSighting()
+            indexValue = indexValue + 1
         
         pass
