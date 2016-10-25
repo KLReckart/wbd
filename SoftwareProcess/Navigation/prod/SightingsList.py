@@ -12,10 +12,20 @@ class SightingsList():
     
     def addSighting(self, sightingIN=None):
         funcName = "SightingsList.addSighting"
-        if sightingIN <> None and isinstance(sightingIN, Sighting):
+        if sightingIN <> None and isinstance(sightingIN, Sighting.Sighting):
             self.thisList.append(sightingIN)
         else:
             raise ValueError(funcName + ":  trying to a Null or Non Sighting value to list")
+        pass
+    
+    def printSightingsList(self):
+        #for each sighting in the list, print it
+        indexValue = 1
+        for aSighting in self.thisList:
+            print str(indexValue) + "\n"
+            aSighting.printSighting()
+            indexValue = indexValue + 1
+        
         pass
     
     def sortSightingsList(self):
@@ -44,12 +54,4 @@ class SightingsList():
             result = sightingIN.getBody()
         return result
     
-    def printSightingsList(self):
-        #for each sighting in the list, print it
-        indexValue = 1
-        for aSighting in self.thisList:
-            print str(indexValue) + "\n"
-            aSighting.printSighting()
-            indexValue = indexValue + 1
-        
-        pass
+    
