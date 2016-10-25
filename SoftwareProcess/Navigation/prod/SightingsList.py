@@ -1,3 +1,4 @@
+#LOC = 15 (10/24/16) 
 import Navigation.prod.Sighting as Sighting
 
 class SightingsList():

@@ -1,3 +1,4 @@
+#LOC = 151 (10/24/16)
 import math
 
 class Angle():

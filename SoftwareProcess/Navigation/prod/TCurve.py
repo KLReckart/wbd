@@ -1,3 +1,4 @@
+#LOC made = 35 (10/24/16)
 import math
 class TCurve(object):
 
@@ -136,9 +137,4 @@ class TCurve(object):
         result = simpsonNew
                 
         return result
-        
-        
-    
-        
-            
-        
+

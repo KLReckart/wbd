@@ -1,4 +1,4 @@
-
+#LOC = 42 (10/24/16)
 class Sighting():
     
     def __init__(self):
