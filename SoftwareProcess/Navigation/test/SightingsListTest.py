@@ -44,10 +44,15 @@ class SightingsListTest(unittest.TestCase):
         aList.addSighting(aSighting)
         
         #check that the len = 1
+        result1 = len(aList.getThisList())
+        expected1 = 1
+        self.assertEquals(result1, expected1, str(result1) + " != " + str(expected1))
         
         #check that the Body for first and only Sighting in list is "sighting01_Body"
+        result2 = aList.getThisList()[0].getBody()
+        expected2 = "sighting01_Body"
+        self.assertEquals(result2, expected2, str(result2) + " != " + str(expected2))
         
-        pass 
         
 
 
