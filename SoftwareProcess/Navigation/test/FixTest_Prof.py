@@ -87,6 +87,7 @@ class TestFix_Prof(unittest.TestCase):
                 entry = theLogFile.readline()
                 self.assertNotEquals(-1, entry.find(self.logStartString), 
                                      "Minor:  first line of log is incorrect")
+            theLogFile.close()
         except IOError:
             self.fail()
         self.assertIsInstance(theFix, F.Fix, 
@@ -388,6 +389,9 @@ class TestFix_Prof(unittest.TestCase):
         theFix.setSightingFile(testFile)
         theFix.getSightings()
         
+        theFixlogFileName = theFix.getLogFileName()
+        print ("theFixLogFileName: " + theFixlogFileName)
+        
         theLogFile = open(self.RANDOM_LOG_FILE, "r")
         logFileContents = theLogFile.readlines()
         theLogFile.close()
@@ -409,8 +413,10 @@ class TestFix_Prof(unittest.TestCase):
         theFix = F.Fix(self.RANDOM_LOG_FILE)
         theFix.setSightingFile(testFile)
         theFix.getSightings()
+        
         theFixlogFileName = theFix.getLogFileName()
         print ("theFixLogFileName: " + theFixlogFileName)
+        
         theLogFile = open(self.RANDOM_LOG_FILE, "r")
         logFileContents = theLogFile.readlines()
         theLogFile.close()

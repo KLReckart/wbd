@@ -1,4 +1,0 @@
-LOG: 2016-10-29 13:13:21.837000 Start of log
-LOG: 2016-10-29 13:13:21.841000 Start of sighting file: CA02_300_ValidOneStarWithDefaultValues.xml
-LOG: 2016-10-29 13:13:21.845000 Hadar	2016-03-01	23:40:01	30d1.5
-LOG: 2016-10-29 13:13:21.849000 End of sighting file: CA02_300_ValidOneStarWithDefaultValues.xml

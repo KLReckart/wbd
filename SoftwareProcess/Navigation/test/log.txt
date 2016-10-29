@@ -1,2 +1,3 @@
-LOG: 2016-10-29 13:53:22.459000 Start of log
-LOG: 2016-10-29 13:53:22.464000 Start of sighting file: CA02_300_InvalidHorizon.xml
+LOG: 2016-10-29 16:35:55.122000 Start of log
+LOG: 2016-10-29 16:35:55.152000 Start of sighting file: CA02_300_InvalidHorizon.xml
+LOG: 2016-10-29 16:35:55.159000 Aldebaran	2016-03-01	23:40:01	15d1.5

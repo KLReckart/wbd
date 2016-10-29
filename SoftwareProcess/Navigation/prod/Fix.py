@@ -117,7 +117,7 @@ class Fix():
         return result
     
     def getSightings(self):
-        result = (0, 0)
+        result = ("0d0.0", "0d0.0")
         funcName = "Fix.getSightings"
         
         #if getData() = False, raise Value Error (invalid data from sighting file)
@@ -173,6 +173,13 @@ class Fix():
             
             #get possible data,
             # if data does not exist, set default values
+            if len(aSighting.getElementsByTagName('horizon')) > 0:
+                thisHorizon = aSighting.getElementsByTagName('horizon')[0].firstChild.data
+                #set the horizon to all lower case letters
+                currentSighting.setHorizon(thisHorizon.lower())
+            else:
+                currentSighting.setHorizon("natural")
+            # b/c the next few values need to be converted to int or floats, there is more code to ensure this before setting Sighting object values
             if len(aSighting.getElementsByTagName('height')) > 0:
                 thisHeight = aSighting.getElementsByTagName('height')[0].firstChild.data
                 #below explains why need a thisCanBeAFloat and thisCanBeAnInt
@@ -186,21 +193,30 @@ class Fix():
                     else:
                         #do not set the height
                         result = False
-
+                        errorString = "could not set Height\n"
             else:
-                #print "no height"
+                #no height, so set default
                 currentSighting.setHeight(0.0)
-            if len(aSighting.getElementsByTagName('horizon')) > 0:
-                currentSighting.setHorizon(aSighting.getElementsByTagName('horizon')[0].firstChild.data)
-            else:
-                currentSighting.setHorizon("Natural")
             if len(aSighting.getElementsByTagName('pressure')) > 0:
-                currentSighting.setPressure(aSighting.getElementsByTagName('pressure')[0].firstChild.data)
+                thisPressure = aSighting.getElementsByTagName('pressure')[0].firstChild.data
+                if self.thisCanBeAnInt(thisPressure) == True:
+                    currentSighting.setPressure(int(thisPressure))
+                else:
+                    #do not set pressure
+                    result = False
+                    errorString = "could not set Pressure\n"
             else:
+                #no pressure, so set default
                 currentSighting.setPressure(1010)
             if len(aSighting.getElementsByTagName('temperature')) > 0:
-                currentSighting.setTemp(aSighting.getElementsByTagName('temperature')[0].firstChild.data)
+                thisTemp = aSighting.getElementsByTagName('temperature')[0].firstChild.data
+                if self.thisCanBeAnInt(thisTemp) == True:                
+                    currentSighting.setTemp(int(thisTemp))
+                else:
+                    result = False
+                    errorString = "could not set Temp\n"
             else:
+                #no temp, so set default
                 currentSighting.setTemp(72)
                 
             #check that the possible values that have been set (AKA: not None)
@@ -220,7 +236,7 @@ class Fix():
             if currentSighting.getHorizon() <> None:
                 if self.validHorizon(currentSighting.getHorizon()) == False:
                     result = False
-                    errorString = errorString + "invalid Horizon"
+                    errorString = errorString + "invalid Horizon\n"
             
             
             #if have time go back and trim off extra white spaces
@@ -316,13 +332,12 @@ class Fix():
         result = False
         #check that the input is a string with one of two values: 'natural' or 'artificial'
         try:
-            if isinstance(horizionIN, str) == True:
-                if horizionIN == "Natural" or horizionIN == "Artificial":
-                    result = True
-                else:
-                    result = False
+
+            if horizionIN == "natural" or horizionIN == "artificial":
+                result = True
             else:
                 result = False
+
         except:
             result = False
         return result

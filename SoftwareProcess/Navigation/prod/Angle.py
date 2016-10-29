@@ -257,6 +257,6 @@ class Angle():
         #math.tan(angle) where angle is in radians
         result = math.tan(angleInRadians)
         #convert radians to degrees with degrees(radiansIN)
-        result = math.degrees(result)
+        #result = math.degrees(result)
         return result
     
