@@ -1,0 +1,4 @@
+LOG: 2016-10-29 11:53:53.410000 Start of log
+LOG: 2016-10-29 11:53:53.414000 Start of sighting file: CA02_300_ValidOneStarArtificialHorizon.xml
+LOG: 2016-10-29 11:53:53.420000 Hadar	2016-03-01	23:40:01	29d57.2
+LOG: 2016-10-29 11:53:53.424000 End of sighting file: CA02_300_ValidOneStarArtificialHorizon.xml

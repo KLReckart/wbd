@@ -50,9 +50,11 @@ class Fix():
         self.siteFileName = fileName_IN
         pass
     
-    def setSightingFile(self, sightingFile):
+    def setSightingFile(self, sightingFile=None):
         funcName = "Fix.setSightingFile"
-
+        if sightingFile == None:
+            raise ValueError(funcName + ":  missing sightingFile")
+        
         if isinstance(sightingFile, str) and sightingFile[-4:] == ".xml":
             #check that the sightingFile exists
             if (os.path.isfile(sightingFile) == True):
@@ -139,6 +141,7 @@ class Fix():
         
         #returns True if all data was correct and has mandatory data
         result = True
+        errorString = "Sight File: " + self.siteFileName + "\n"
         logFile = open(self.logFileName, "a")
         #parse the xml file
         xmlDocument = minidom.parse(self.siteFileName)
@@ -163,20 +166,63 @@ class Fix():
             except:
                 result = False
             
-            #get possible data
+            #check that the observation has the correct value
+            if self.validObservation(currentSighting.getObservation()) == False:
+                result = False
+                errorString = errorString + "invalidObservation\n"
+            
+            #get possible data,
+            # if data does not exist, set default values
             if len(aSighting.getElementsByTagName('height')) > 0:
-                currentSighting.setHeight(float(aSighting.getElementsByTagName('height')[0].firstChild.data))
-                #print "height: " + currentSighting.getHeight()
-            #else:
+                thisHeight = aSighting.getElementsByTagName('height')[0].firstChild.data
+                #below explains why need a thisCanBeAFloat and thisCanBeAnInt
+                #https://www.peterbe.com/plog/interesting-casting-in-python
+                if self.thisCanBeAFloat(thisHeight) == True or self.thisCanBeAnInt(thisHeight) == True:
+                    #check for int first!!!
+                    if self.thisCanBeAnInt(thisHeight) == True:
+                        currentSighting.setHeight(int(thisHeight))
+                    elif self.thisCanBeAFloat(thisHeight) == True:
+                        currentSighting.setHeight(float(thisHeight))
+                    else:
+                        #do not set the height
+                        result = False
+
+            else:
                 #print "no height"
+                currentSighting.setHeight(0.0)
             if len(aSighting.getElementsByTagName('horizon')) > 0:
                 currentSighting.setHorizon(aSighting.getElementsByTagName('horizon')[0].firstChild.data)
+            else:
+                currentSighting.setHorizon("Natural")
             if len(aSighting.getElementsByTagName('pressure')) > 0:
-                currentSighting.setPressure(float(aSighting.getElementsByTagName('pressure')[0].firstChild.data))
+                currentSighting.setPressure(aSighting.getElementsByTagName('pressure')[0].firstChild.data)
+            else:
+                currentSighting.setPressure(1010)
             if len(aSighting.getElementsByTagName('temperature')) > 0:
-                currentSighting.setTemp(float(aSighting.getElementsByTagName('temperature')[0].firstChild.data))
+                currentSighting.setTemp(aSighting.getElementsByTagName('temperature')[0].firstChild.data)
+            else:
+                currentSighting.setTemp(72)
+                
+            #check that the possible values that have been set (AKA: not None)
+            # check that these values are correct have the correct values
+            if currentSighting.getHeight() <> None:
+                if self.validHeight(currentSighting.getHeight()) == False:
+                    result = False
+                    errorString = errorString + "invalid Height\n"
+            if currentSighting.getTemp() <> None:
+                if self.validTemp(currentSighting.getTemp()) == False:
+                    result = False
+                    errorString = errorString + "invalid Temp\n"
+            if currentSighting.getPressure() <> None:
+                if self.validPressure(currentSighting.getPressure()) == False:
+                    result = False
+                    errorString = errorString + "invalid Pressure\n"
+            if currentSighting.getHorizon() <> None:
+                if self.validHorizon(currentSighting.getHorizon()) == False:
+                    result = False
+                    errorString = errorString + "invalid Horizon"
             
-            #if have time go back and check for correct values of data
+            
             #if have time go back and trim off extra white spaces
             
             
@@ -193,6 +239,116 @@ class Fix():
             
         #done looping through site file
         logFile.close()
+        print "getData errorString:\n" + errorString
+        return result
+    
+    #returns True if the obersvationIN is a valid observation,
+    # else, returns False        
+    def validObservation(self, observationIN):
+        result = True
+        #make the observationIN into an Angle object, this will ensure the correct value
+        try:
+            tempAngle = Angle.Angle()
+            returnedValue = tempAngle.setDegreesAndMinutes(observationIN)
+        except:
+            result = False
+        return result
+    
+    #returns True if the heightIN is a valid height,
+    # else, returns False
+    def validHeight(self, heightIN):
+        result = False
+        #check that the input is a numeric that is greater than or equal to zero
+        try:
+            if isinstance(heightIN, int) == True or isinstance(heightIN, float) == True:
+                # then the value is a numeric
+                # let's check >= zero
+                if heightIN >= 0:
+                    result = True
+                else:
+                    result = False
+            else:
+                result = False
+        except:
+            result = False
+        
+        return result
+    
+    #returns True if the tempIN is a valid temperature,
+    # else, returns False
+    def validTemp(self, tempIN):
+        result = False
+        #check that the input is an integer with a value of [-20, 120]
+        try:
+            if isinstance(tempIN, int) == True:
+                # then the value is an int -> let's check value is [-20, 120]
+                if tempIN >= -20 and tempIN <= 120:
+                    result = True
+                else:
+                    result = False
+            else:
+                result = False
+        except:
+            result = False
+        return result
+    
+    #returns True if the pressureIN is a valid pressure
+    # else, returns False
+    def validPressure(self, pressureIN):
+        result = False
+        #check that the input is an integer with a value of [100, 1100]
+        try:
+            if isinstance(pressureIN, int) == True:
+                # then the value is an int -> let's check value is [100, 1100]
+                if pressureIN >= 100 and pressureIN <= 1100:
+                    result = True
+                else:
+                    result = False
+            else:
+                result = False
+        except:
+            result = False
+        return result
+    
+    #returns True if the horizionIN is a valid horizon
+    # else, return False
+    def validHorizon(self, horizionIN):
+        result = False
+        #check that the input is a string with one of two values: 'natural' or 'artificial'
+        try:
+            if isinstance(horizionIN, str) == True:
+                if horizionIN == "Natural" or horizionIN == "Artificial":
+                    result = True
+                else:
+                    result = False
+            else:
+                result = False
+        except:
+            result = False
         return result
         
+    #takes in a value and tries to cast the value as an int,
+    # if this is possible, the function returns True
+    # else the function returns False
+    #below explains why need a try
+    #https://www.peterbe.com/plog/interesting-casting-in-python
+    def thisCanBeAnInt(self, valueIN):
+        result = True
+        try:
+            temp = int(valueIN)
+        except:
+            result = False
+                    
+        return result
+    
+    #takes in a value and tries to cast the value as a float,
+    # if this is possible, the function returns True
+    # else the function returns False
+    def thisCanBeAFloat(self, valueIN):
+        result = True
+        try:
+            temp = float(valueIN)
+        except:
+            result = False
         
+        return result

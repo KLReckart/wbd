@@ -409,7 +409,8 @@ class TestFix_Prof(unittest.TestCase):
         theFix = F.Fix(self.RANDOM_LOG_FILE)
         theFix.setSightingFile(testFile)
         theFix.getSightings()
-        
+        theFixlogFileName = theFix.getLogFileName()
+        print ("theFixLogFileName: " + theFixlogFileName)
         theLogFile = open(self.RANDOM_LOG_FILE, "r")
         logFileContents = theLogFile.readlines()
         theLogFile.close()
@@ -420,7 +421,7 @@ class TestFix_Prof(unittest.TestCase):
                 sightingCount += 1
                 for target in targetStringList:
                     self.assertNotEquals(-1, logFileContents[logEntryNumber].find(target), 
-                                         "Major:  Log entry is not correct for getSightings")
+                                         "Major:  Log entry is not correct for getSightings\n" + theFixlogFileName)
         self.assertEquals(1, sightingCount)
         self.cleanup()  
 
