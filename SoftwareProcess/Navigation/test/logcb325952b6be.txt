@@ -1,0 +1,2 @@
+LOG: 2016-10-30 23:57:06.601000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\logcb325952b6be.txt
+LOG: 2016-10-30 23:57:06.606000 Aries file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt

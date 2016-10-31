@@ -1,0 +1,2 @@
+LOG: 2016-10-30 22:39:45.282000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log54964d626925.txt
+LOG: 2016-10-30 22:39:45.298000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA02_200_ValidStarSightingFile.xml

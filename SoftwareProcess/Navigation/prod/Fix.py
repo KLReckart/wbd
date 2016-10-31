@@ -61,7 +61,7 @@ class Fix():
             if (os.path.isfile(sightingFile) == True):
                 self.setSiteFileName(sightingFile)
                 #add line to log file associated with the Fix instance
-                stringToAdd = "LOG: "+ str(datetime.today()) +" Start of sighting file: " + sightingFile + "\n"
+                stringToAdd = "LOG: "+ str(datetime.today()) +" Sighting file:\t" + os.path.abspath(sightingFile) + "\n"
                 logFile = open(self.getLogFileName(), "a")
                 logFile.write(stringToAdd)
                 #close the log file
@@ -70,7 +70,8 @@ class Fix():
                 raise ValueError(funcName + ":  sighting file does not exist in current directory")
         else:
             raise ValueError(funcName + ":  invalid input")
-        return sightingFile
+        result = str(os.path.abspath(sightingFile))
+        return result
     
     def celsius(self, farIN):
         #(Fahrenheit - 32) * 5.0/9.0
@@ -368,3 +369,31 @@ class Fix():
             result = False
         
         return result
+    
+    def checkValidTextFileName(self, stringIN=None):
+        result = False
+        if stringIN <> None and isinstance(stringIN, str):
+            if stringIN[-4:] == ".txt" and len(stringIN) > 4:
+                result = True
+        return result
+    
+    def setAriesFile(self, ariesFile=None):
+        funcName = "Fix.setAriesFile"
+        if self.checkValidTextFileName(ariesFile) == True:
+            try:
+                result = str(os.path.abspath(ariesFile))
+            except:
+                raise ValueError(funcName + ":  aries file does not exist")
+            lineToWrite = "LOG: " + str(datetime.today()) + " Aries file:\t" + result + "\n"
+            try:
+                logFile = open(self.logFileName, "a")
+                logFile.write(lineToWrite)
+                logFile.close()
+            except:
+                raise ValueError(funcName + ":  cannot open and write to the log file for some reason")
+        else:
+            raise ValueError(funcName + ":  invalid input")
+        
+        return result
+    
+    

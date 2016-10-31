@@ -19,6 +19,7 @@ class Fix_CA03_Test(unittest.TestCase):
         self.className = "Fix."
         self.logStartString = "Log file:\t"
         self.logSightingString = "Sighting file:\t"
+        self.logAriesString = "Aries file:\t"
         
         # set default log file name
         self.DEFAULT_LOG_FILE = "log.txt"
@@ -126,26 +127,28 @@ class Fix_CA03_Test(unittest.TestCase):
         theFix = Fix.Fix(logFile=self.RANDOM_LOG_FILE)
         try:
             result = theFix.setSightingFile("CA02_200_ValidStarSightingFile.xml")
-            self.assertEquals(result, "CA02_200_ValidStarSightingFile.xml")
+            self.assertEquals(result, str(os.path.abspath("CA02_200_ValidStarSightingFile.xml")))
         except:
             self.fail("Minor: incorrect keyword specified in setSighting parm")
         self.cleanup()   
 
-    def test200_020_ShouldSetValidSightingFile(self):
+    def test200_020_ShouldSetValidSightingFileAndReturnsPath(self):
         theFix = Fix.Fix()
         result = theFix.setSightingFile("CA02_200_ValidStarSightingFile.xml")
-        self.assertEquals(result,"CA02_200_ValidStarSightingFile.xml")
+
         theLogFile = open(self.DEFAULT_LOG_FILE, "r")
         logFileContents = theLogFile.readlines()
         self.assertNotEquals(-1, logFileContents[-1].find(self.logSightingString + os.path.abspath("CA02_200_ValidStarSightingFile.xml") + "\n"), 
                              "Minor:  first setSighting logged entry is incorrect")
+        expected = str(os.path.abspath("CA02_200_ValidStarSightingFile.xml"))
+        self.assertEquals(result, expected, result + " != " + expected)
         theLogFile.close()
         
     def test200_910_ShouldRaiseExceptionOnNonStringFileName(self):
         expectedDiag = self.className + "setSightingFile:"
         theFix = Fix.Fix()
         with self.assertRaises(ValueError) as context:
-            theFix.setSightingFile(42)
+            theFix.setSightingFile(55)
         self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)],
                           "Minor:  failure to check for non-string sighting file name")  
         
@@ -192,7 +195,72 @@ class Fix_CA03_Test(unittest.TestCase):
     
         
         
+# 300 setAriesFile
 
+    def test300_010_ShouldConstructParam(self):
+        thisFix = Fix.Fix()
+        result = thisFix.setAriesFile("aries.txt")
+        expected = str(os.path.abspath("aries.txt"))
+        self.assertEquals(result, expected, result + " != " + expected)
+        
+    def test300_020_LineWrittenToLog(self):
+        logFile = self.RANDOM_LOG_FILE
+        thisFix = Fix.Fix(logFile)
+        temp = thisFix.setAriesFile("aries.txt")
+        expectedLine = os.path.abspath("aries.txt") + "\n"
+
+        print "random file: " + logFile
+        
+        theLogFile = open(self.RANDOM_LOG_FILE, "r")
+        logFileContents = theLogFile.readlines()
+        theLogFile.close()
+        
+        sightingCount = 0
+        for logEntryNumber in range(0, len(logFileContents)):
+            if(logFileContents[logEntryNumber].find(expectedLine) > -1):
+                sightingCount += 1
+                #for target in targetStringList:
+                self.assertNotEquals(-1, logFileContents[logEntryNumber].find(expectedLine), 
+                                         "Major:  Log entry is not correct for getSightings")
+        self.assertEquals(1, sightingCount)
+        self.cleanup()  
+        
+        self.assertIsInstance(thisFix, Fix.Fix, 
+                              "Major:  log file failed to create")
+        self.cleanup()  
+        
+    def test300_910_FailWithNoExt(self):
+        logFile = self.RANDOM_LOG_FILE
+        thisFix = Fix.Fix(logFile)
+        ariesFile = "aries"
+        expectedDiag = "Fix.setAriesFile:  invalid input"
+        with self.assertRaises(ValueError) as context:
+            temp = thisFix.setAriesFile(ariesFile)
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)], 
+                          expectedDiag + " != " + context.exception.args[0][0:len(expectedDiag)])  
+        
+    def test300_920_FailWithNoFileName(self):
+        logFile = self.RANDOM_LOG_FILE
+        thisFix = Fix.Fix(logFile)
+        ariesFile = ".txt"
+        expectedDiag = "Fix.setAriesFile:  invalid input"
+        with self.assertRaises(ValueError) as context:
+            temp = thisFix.setAriesFile(ariesFile)
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)], 
+                          expectedDiag + " != " + context.exception.args[0][0:len(expectedDiag)])  
+        
+    def test300_920_FailWithNonStringInput(self):
+        logFile = self.RANDOM_LOG_FILE
+        thisFix = Fix.Fix(logFile)
+        ariesFile = 55
+        expectedDiag = "Fix.setAriesFile:  invalid input"
+        with self.assertRaises(ValueError) as context:
+            temp = thisFix.setAriesFile(ariesFile)
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)], 
+                          expectedDiag + " != " + context.exception.args[0][0:len(expectedDiag)]) 
+        
+            
+        
     
 #  helper methods
     def indexInList(self, target, searchList):
