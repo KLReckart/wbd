@@ -1,2 +1,0 @@
-LOG: 2016-10-29 16:34:29.071000 Start of log
-LOG: 2016-10-29 16:34:29.082000 Start of sighting file: CA02_200_ValidStarSightingFile.xml

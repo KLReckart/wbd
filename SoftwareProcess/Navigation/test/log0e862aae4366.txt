@@ -1,5 +1,0 @@
-LOG: 2016-10-29 16:34:29.368000 Start of log
-LOG: 2016-10-29 16:34:29.383000 Start of sighting file: CA02_300_ValidMultipleStarSighting.xml
-LOG: 2016-10-29 16:34:29.399000 Canopus	2016-03-02	23:40:01	15d1.5
-LOG: 2016-10-29 16:34:29.402000 Sirius	2016-03-01	00:05:05	45d11.9
-LOG: 2016-10-29 16:34:29.413000 End of sighting file: CA02_300_ValidMultipleStarSighting.xml

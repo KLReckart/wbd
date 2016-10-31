@@ -3,6 +3,7 @@ import os
 import math
 from xml.dom import minidom
 from __builtin__ import str
+
 import Navigation.prod.Sighting as Sighting
 import Navigation.prod.SightingsList as SightingsList
 import Navigation.prod.Angle as Angle
@@ -26,7 +27,7 @@ class Fix():
                 #if file was not created, raise exception
                 raise ValueError(funcName + ":  failed to create or append file")
             #append the desired line to the beginning of the file
-            string01 = "LOG: " + str(datetime.today()) + " Start of log\n"
+            string01 = "LOG: " + str(datetime.today()) + " Log file:\t" + os.path.abspath(logFile) + "\n"
             try:
                 file01.write(string01)
             except:
