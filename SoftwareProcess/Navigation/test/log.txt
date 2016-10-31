@@ -21,3 +21,43 @@ LOG: 2016-10-30 21:14:16.084000 Log file:	C:\College\GitRepository\SoftwareProce
 LOG: 2016-10-30 21:14:16.116000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
 LOG: 2016-10-30 21:14:38.155000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
 LOG: 2016-10-30 21:14:38.155000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:30:52.949000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:30:52.980000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:30:53.043000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:30:53.043000 Start of sighting file: CA02_200_ValidStarSightingFile.xml
+LOG: 2016-10-30 21:30:53.058000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:30:53.074000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:30:53.074000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:30:53.090000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:30:53.090000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:30:53.105000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:31:31.275000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:31:31.306000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:31:31.337000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:31:31.337000 Start of sighting file: CA02_200_ValidStarSightingFile.xml
+LOG: 2016-10-30 21:31:31.337000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:31:31.369000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:31:31.369000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:31:31.384000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:31:31.384000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 21:31:31.400000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:26:41.924000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:26:41.987000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:26:42.018000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:26:42.033000 Start of sighting file: CA02_200_ValidStarSightingFile.xml
+LOG: 2016-10-30 22:26:42.033000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:26:42.049000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:26:42.065000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:26:42.065000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:26:42.096000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:26:42.118000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:29:06.039000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:29:06.055000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:29:06.086000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:29:06.086000 Start of sighting file: CA02_200_ValidStarSightingFile.xml
+LOG: 2016-10-30 22:29:06.102000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:29:06.102000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:29:06.102000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:29:06.117000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:29:06.117000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-10-30 22:29:06.133000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt

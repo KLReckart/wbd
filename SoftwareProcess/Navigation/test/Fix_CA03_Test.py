@@ -20,6 +20,9 @@ class Fix_CA03_Test(unittest.TestCase):
         self.logStartString = "Log file:\t"
         self.logSightingString = "Sighting file:\t"
         
+        # set default log file name
+        self.DEFAULT_LOG_FILE = "log.txt"
+        
         # generate random log file name
         self.RANDOM_LOG_FILE = "log" + str(uuid.uuid4())[-12:] + ".txt"
 
@@ -116,7 +119,76 @@ class Fix_CA03_Test(unittest.TestCase):
         
         
         
+# 200 setSightingFile
 
+    def test200_010_ShouldConstructWithKeywordParm(self):
+        'Minor:  '
+        theFix = Fix.Fix(logFile=self.RANDOM_LOG_FILE)
+        try:
+            result = theFix.setSightingFile("CA02_200_ValidStarSightingFile.xml")
+            self.assertEquals(result, "CA02_200_ValidStarSightingFile.xml")
+        except:
+            self.fail("Minor: incorrect keyword specified in setSighting parm")
+        self.cleanup()   
+
+    def test200_020_ShouldSetValidSightingFile(self):
+        theFix = Fix.Fix()
+        result = theFix.setSightingFile("CA02_200_ValidStarSightingFile.xml")
+        self.assertEquals(result,"CA02_200_ValidStarSightingFile.xml")
+        theLogFile = open(self.DEFAULT_LOG_FILE, "r")
+        logFileContents = theLogFile.readlines()
+        self.assertNotEquals(-1, logFileContents[-1].find(self.logSightingString + os.path.abspath("CA02_200_ValidStarSightingFile.xml") + "\n"), 
+                             "Minor:  first setSighting logged entry is incorrect")
+        theLogFile.close()
+        
+    def test200_910_ShouldRaiseExceptionOnNonStringFileName(self):
+        expectedDiag = self.className + "setSightingFile:"
+        theFix = Fix.Fix()
+        with self.assertRaises(ValueError) as context:
+            theFix.setSightingFile(42)
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)],
+                          "Minor:  failure to check for non-string sighting file name")  
+        
+    def test200_920_ShouldRaiseExceptionOnFileLengthError(self):
+        expectedDiag = self.className + "setSightingFile:"
+        theFix = Fix.Fix()
+        with self.assertRaises(ValueError) as context:
+            theFix.setSightingFile(".xml")
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)],
+                          "Minor:  failure to check for .GE. 1 sighting file name") 
+        
+    def test200_930_ShouldRaiseExceptionOnNonXmlFile1(self):
+        expectedDiag = self.className + "setSightingFile:"
+        theFix = Fix.Fix()
+        with self.assertRaises(ValueError) as context:
+            theFix.setSightingFile("sighting.")
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)],
+                          "Minor:  failure to check for non.xml sighting file extension")
+        
+    def test200_940_ShouldRaiseExceptionOnNonXmlFile2(self):
+        expectedDiag = self.className + "setSightingFile:"
+        theFix = Fix.Fix()
+        with self.assertRaises(ValueError) as context:
+            theFix.setSightingFile("xml")
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)],
+                          "Minor:  failure to delineate between sighting file name and extension") 
+        
+    def test200_950_SholdRaiseExceptionOnMissingFileName(self):
+        expectedDiag = self.className + "setSightingFile:"
+        theFix = Fix.Fix()
+        with self.assertRaises(ValueError) as context:
+            theFix.setSightingFile()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)],
+                          "Major:  failure to check for missing sighting file")       
+        
+           
+    def test200_960_SholdRaiseExceptionOnMissingFile(self):
+        expectedDiag = self.className + "setSightingFile:"
+        theFix = Fix.Fix()
+        with self.assertRaises(ValueError) as context:
+            theFix.setSightingFile(self.RANDOM_LOG_FILE+".xml")
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)],
+                          "Major:  failure to check for missing sighting file") 
     
         
         
