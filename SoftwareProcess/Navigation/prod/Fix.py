@@ -6,6 +6,8 @@ from __builtin__ import str
 
 import Navigation.prod.Sighting as Sighting
 import Navigation.prod.SightingsList as SightingsList
+import Navigation.prod.AriesList as AriesList
+import Navigation.prod.StarsList as StarsList
 import Navigation.prod.Angle as Angle
 
 
@@ -20,6 +22,11 @@ class Fix():
             self.logFileName = logFile
             #set Fix attribute: siteFileName
             self.siteFileName = None
+            
+            #initialize the SightingsList, AriesList, and StarList
+            
+            
+            
             #create or append the file with the desired name
             try:
                 file01 = open(logFile, "a")

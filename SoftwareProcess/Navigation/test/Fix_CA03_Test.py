@@ -10,7 +10,7 @@ import unittest
 import uuid
 import os
 import Navigation.prod.Fix as Fix
-
+import Navigation.prod.Aries as Aries
 
 
 class Fix_CA03_Test(unittest.TestCase):
@@ -229,6 +229,10 @@ class Fix_CA03_Test(unittest.TestCase):
                               "Major:  log file failed to create")
         self.cleanup()  
         
+    def test300_030_CreatesAnAriesObject(self):
+        
+        
+    
     def test300_910_FailWithNoExt(self):
         logFile = self.RANDOM_LOG_FILE
         thisFix = Fix.Fix(logFile)
@@ -238,7 +242,7 @@ class Fix_CA03_Test(unittest.TestCase):
             temp = thisFix.setAriesFile(ariesFile)
         self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)], 
                           expectedDiag + " != " + context.exception.args[0][0:len(expectedDiag)])  
-        
+    
     def test300_920_FailWithNoFileName(self):
         logFile = self.RANDOM_LOG_FILE
         thisFix = Fix.Fix(logFile)
