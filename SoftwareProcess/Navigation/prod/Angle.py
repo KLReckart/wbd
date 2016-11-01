@@ -36,39 +36,45 @@ class Angle():
         else :
         #b/c the next few checks are dependent of the 'd' being in the string, these checks need to be done if countD = 1
             splitStringList = angleString.split("d")
-            # does angleString have a digit before 'd'
-            if(not(isinstance(self.num(splitStringList[0]), int))):
-                result = False
-                #raise ValueError("Angle.checkAngleString:  the angleString must have an integer value before 'd'")
-                pass
-            # does angleString have anything after 'd'
-            if(len(splitStringList[1]) == 0):
-                result = False
-                #raise ValueError("Angle.checkAngleString:  the angleString must have an integer or float value after 'd'")
-            # does angleString have a digit or float after 'd'; test for float b/c an int can be converted to a float
             
-            elif(not(isinstance(self.num(splitStringList[1]), float)) and not(isinstance(self.num(splitStringList[1]), int))):
-                result = False
-                #raise ValueError("Angle.checkAngleString:  the angleString must have an integer or float value after 'd'")
-            else:
-                print(float(splitStringList[1]))
-                #check that this int or float is positive, it needs to be
-                if self.num(splitStringList[1]) < 0.0 :
+            try:
+            
+                # does angleString have a digit before 'd'
+                if(not(isinstance(self.num(splitStringList[0]), int))):
                     result = False
-                    #raise ValueError("Angle.checkAngleString:  the angleString must have a positive value after 'd'")
+                    #raise ValueError("Angle.checkAngleString:  the angleString must have an integer value before 'd'")
                     pass
-                
-                pass
-                #check that if float, there is only one digit after "."
-                if isinstance(self.num(splitStringList[1]), float):
-                    temp = str(self.num(splitStringList[1]))
-                    splitStringList2 = temp.split(".")
-                    if len(splitStringList2[1]) > 1:
+                # does angleString have anything after 'd'
+                if(len(splitStringList[1]) == 0):
+                    result = False
+                    #raise ValueError("Angle.checkAngleString:  the angleString must have an integer or float value after 'd'")
+                # does angleString have a digit or float after 'd'; test for float b/c an int can be converted to a float
+            
+                elif(not(isinstance(self.num(splitStringList[1]), float)) and not(isinstance(self.num(splitStringList[1]), int))):
+                    result = False
+                    #raise ValueError("Angle.checkAngleString:  the angleString must have an integer or float value after 'd'")
+                else:
+                    print(float(splitStringList[1]))
+                    #check that this int or float is positive, it needs to be
+                    if self.num(splitStringList[1]) < 0.0 :
                         result = False
-                        #raise ValueError("Angle.checkAngleString:  the angleString must have 1 digit value after '.'")
-                        pass                    
-            pass
-        
+                        #raise ValueError("Angle.checkAngleString:  the angleString must have a positive value after 'd'")
+                        pass
+                
+                    pass
+                    #check that if float, there is only one digit after "."
+                    if isinstance(self.num(splitStringList[1]), float):
+                        temp = str(self.num(splitStringList[1]))
+                        splitStringList2 = temp.split(".")
+                        if len(splitStringList2[1]) > 1:
+                            result = False
+                            #raise ValueError("Angle.checkAngleString:  the angleString must have 1 digit value after '.'")
+                            pass                    
+                pass
+            
+            except:
+                result = False
+            
         return result
     #KLR's made function
     # Purpose: return minutes of an enter degree
@@ -252,6 +258,6 @@ class Angle():
         #math.tan(angle) where angle is in radians
         result = math.tan(angleInRadians)
         #convert radians to degrees with degrees(radiansIN)
-        result = math.degrees(result)
+        #result = math.degrees(result)
         return result
     
