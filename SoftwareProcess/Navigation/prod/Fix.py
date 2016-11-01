@@ -403,4 +403,38 @@ class Fix():
         
         return result
     
+    def setStarFile(self, starFile=None):
+        funcName = "Fix.setStarFile"
+        if self.checkValidTextFileName(starFile) == True:
+            try:
+                result = str(os.path.abspath(starFile))
+            except:
+                raise ValueError(funcName + ":  star file does not exist")
+            lineToWrite = "LOG: " + str(datetime.today()) + " Star file:\t" + result + "\n"
+            try:
+                logFile = open(self.logFileName, "a")
+                logFile.write(lineToWrite)
+                logFile.close()
+            except:
+                raise ValueError(funcName + ":  cannot open and write to the log file for some reason")
+        else:
+            raise ValueError(funcName + ":  invalid input")
+        
+        return result
+        
+    def calcSHA_Star(self):
+        #SHA = longitude from the star file
+        
+        pass
     
+    def calcGHA1_Aries(self):
+        
+        pass
+    
+    def calcGHA2_Aries(self):
+        
+        pass
+    
+    def calcGHA_Aries(self):
+        #
+        pass
