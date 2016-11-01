@@ -39,19 +39,19 @@ class SightingsList():
         self.printSightingsList()
         pass
     
-    def sortKeyByDate(self, sightingIN):
-        if isinstance(sightingIN, Sighting)  == True:
-            result = sightingIN.getDate()
-        return result
-    
-    def sortKeyByTime(self, sightingIN):
-        if isinstance(sightingIN, Sighting) == True:
-            result = sightingIN.getTime()
-        return result
-    
-    def sortKeyByBody(self, sightingIN):
-        if isinstance(sightingIN, Sighting) == True:
-            result = sightingIN.getBody()
-        return result
+#     def sortKeyByDate(self, sightingIN):
+#         if isinstance(sightingIN, Sighting)  == True:
+#             result = sightingIN.getDate()
+#         return result
+#     
+#     def sortKeyByTime(self, sightingIN):
+#         if isinstance(sightingIN, Sighting) == True:
+#             result = sightingIN.getTime()
+#         return result
+#     
+#     def sortKeyByBody(self, sightingIN):
+#         if isinstance(sightingIN, Sighting) == True:
+#             result = sightingIN.getBody()
+#         return result
     
     
