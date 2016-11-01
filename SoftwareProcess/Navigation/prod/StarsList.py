@@ -24,7 +24,7 @@ class StarsList():
         
         pass
     
-    def sortAriesList(self):
+    def sortStarsList(self):
         
         #https://docs.python.org/2/howto/sorting.html#sortinghowto
         newList = sorted(self.thisList, key=attrgetter('body', 'date', 'longitude', 'latitude'))
