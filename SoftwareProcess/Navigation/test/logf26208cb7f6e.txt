@@ -1,0 +1,2 @@
+LOG: 2016-12-01 20:52:12.380000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\logf26208cb7f6e.txt
+LOG: 2016-12-01 20:52:12.386000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA02_300_InvalidHeight.xml

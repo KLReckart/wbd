@@ -1,0 +1,6 @@
+LOG: 2016-11-30 20:55:45.523000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log3dd55d0f2a60.txt
+LOG: 2016-11-30 20:55:45.528000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_300_ValidStarLatLonInterpolationRequired.xml
+LOG: 2016-11-30 20:55:45.532000 Aries file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Aries.txt
+LOG: 2016-11-30 20:55:45.536000 Star file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Stars.txt
+LOG: 2016-11-30 20:55:45.545000 Betelgeuse	2017-01-16	03:15:42	9d54.7
+LOG: 2016-11-30 20:55:45.549000 End of sighting file: CA03_300_ValidStarLatLonInterpolationRequired.xml

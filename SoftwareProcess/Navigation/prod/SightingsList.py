@@ -1,4 +1,5 @@
 #LOC = 15 (10/24/16) 
+#LOC = 29 (12/1/16)
 import Navigation.prod.Sighting as Sighting
 from operator import attrgetter
 

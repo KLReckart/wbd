@@ -1,4 +1,5 @@
 #LOC = 191 (10/24/16)
+#LOC = 292 (12/1/16)
 from datetime import datetime
 import os
 import math
@@ -21,8 +22,13 @@ class Fix():
         if (isinstance(logFile, str) and len(logFile) > 0):
             #set Fix attribute: logFileName
             self.logFileName = logFile
-            #set Fix attribute: siteFileName
+            #set Fix attribute: ariesFileName, siteFileName, and starFileName
+            self. ariesFileName = None
             self.siteFileName = None
+            self.starFileName = None
+            
+            #initialize sightings error found variable
+            self.sightingsErrors = 0;
             
             #initialize the SightingsList, AriesList, and StarList
             
@@ -54,9 +60,23 @@ class Fix():
     def getSiteFileName(self):
         return self.siteFileName
     
-    #note the below assumes that the fileName_IN was checked for .xml and is a string
+    def getAriesFileName(self):
+        return self.ariesFileName
+    
+    def getStarFileName(self):
+        return self.starFileName
+    
+    #note the below 3 function assume that the fileName_IN was checked for .xml and is a string
     def setSiteFileName(self, fileName_IN):
         self.siteFileName = fileName_IN
+        pass
+    
+    def setAriesFileName(self, fileName_IN):
+        self.ariesFileName = fileName_IN
+        pass
+    
+    def setStarFileName(self, fileName_IN):
+        self.starFileName = fileName_IN
         pass
     
     def setSightingFile(self, sightingFile=None):
@@ -74,6 +94,7 @@ class Fix():
                 logFile.write(stringToAdd)
                 #close the log file
                 logFile.close()
+# above = 50 LOC
             else:
                 raise ValueError(funcName + ":  sighting file does not exist in current directory")
         else:
@@ -130,17 +151,21 @@ class Fix():
         result = ("0d0.0", "0d0.0")
         funcName = "Fix.getSightings"
         
-        #if getData() = False, raise Value Error (invalid data from sighting file)
-        if self.siteFileName <> None and os.path.isfile(self.siteFileName):
+        #if aries, sighting, and star files have been set -> proceed; else, raise error 
+        
+        
+        if self.getAriesFileName() <> None and self.getSiteFileName() <> None and self.getStarFileName() <> None:
+            #get the data from the sighting file and write each sighting to log file
             flag = self.getData()
-            if flag == False:
-                raise ValueError(funcName + ":  invalid xml data")
+
         else:
             raise ValueError(funcName + ":  site file is not set or invalid")
         
         
-        #write last line to log file associated with the Fix object
+        #write last lines to log file associated with the Fix object
         logFile = open(self.logFileName, "a")
+        errorString = "Sighting errors:\t" + str(self.sightingsErrors) + "\n"
+        logFile.write(errorString)
         endString = "LOG: " + str(datetime.today()) + " End of sighting file: " + str(self.siteFileName) + "\n"
         logFile.write(endString)
         logFile.close()
@@ -158,6 +183,7 @@ class Fix():
         #get the sightings
         thisFix = xmlDocument.documentElement
         sightings = thisFix.getElementsByTagName("sighting")
+# above = 100 LOC
         #get data for each sighting
         for aSighting in sightings:
             currentSighting = Sighting.Sighting()
@@ -233,6 +259,7 @@ class Fix():
             # check that these values are correct have the correct values
             if currentSighting.getHeight() <> None:
                 if self.validHeight(currentSighting.getHeight()) == False:
+# above = 150 LOC
                     result = False
                     errorString = errorString + "invalid Height\n"
             if currentSighting.getTemp() <> None:
@@ -266,6 +293,10 @@ class Fix():
         #done looping through site file
         logFile.close()
         print "getData errorString:\n" + errorString
+        
+        #if result = False, there was a sighting error; increment sightingsErrors by 1
+        if (result == False):
+            self.sightingsErrors = self.sightingsErrors + 1 #increment the sightingsErrors by 1
         return result
     
     #returns True if the obersvationIN is a valid observation,
@@ -310,6 +341,7 @@ class Fix():
                 # then the value is an int -> let's check value is [-20, 120]
                 if tempIN >= -20 and tempIN <= 120:
                     result = True
+#above = 200 LOC
                 else:
                     result = False
             else:
@@ -384,14 +416,22 @@ class Fix():
             if stringIN[-4:] == ".txt" and len(stringIN) > 4:
                 result = True
         return result
+#above = 250 LOC
     
     def setAriesFile(self, ariesFile=None):
         funcName = "Fix.setAriesFile"
+        result = None
         if self.checkValidTextFileName(ariesFile) == True:
-            try:
-                result = str(os.path.abspath(ariesFile))
-            except:
+            
+            #check that the file exists, if not, raise error; else, set result
+            if os.path.exists(os.path.abspath(ariesFile)) == False:
                 raise ValueError(funcName + ":  aries file does not exist")
+            else:
+                result = str(os.path.abspath(ariesFile))
+
+            #if get to here, the file exists, so set the ariesFileName value
+            self.setAriesFileName(ariesFile)
+            #create string to write to log
             lineToWrite = "LOG: " + str(datetime.today()) + " Aries file:\t" + result + "\n"
             try:
                 logFile = open(self.logFileName, "a")
@@ -406,11 +446,19 @@ class Fix():
     
     def setStarFile(self, starFile=None):
         funcName = "Fix.setStarFile"
+        result = None
         if self.checkValidTextFileName(starFile) == True:
-            try:
-                result = str(os.path.abspath(starFile))
-            except:
+            
+            #check that the file exists, if not, raise error; else, set result
+            if os.path.exists(os.path.abspath(starFile)) == False:
                 raise ValueError(funcName + ":  star file does not exist")
+            else:
+                result = str(os.path.abspath(starFile))
+                
+                
+            #if get to here, the file exists, so set the ariesFileName value
+            self.setStarFileName(starFile)
+            #create string to write to log
             lineToWrite = "LOG: " + str(datetime.today()) + " Star file:\t" + result + "\n"
             try:
                 logFile = open(self.logFileName, "a")
@@ -439,3 +487,5 @@ class Fix():
     def calcGHA_Aries(self):
         #
         pass
+    
+#above = 292 LOC (12/1/16)

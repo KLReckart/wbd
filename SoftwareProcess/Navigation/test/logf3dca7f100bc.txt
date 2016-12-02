@@ -1,0 +1,6 @@
+LOG: 2016-12-01 16:40:03.593000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\logf3dca7f100bc.txt
+LOG: 2016-12-01 16:40:03.598000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA02_300_InvalidTime.xml
+LOG: 2016-12-01 16:40:03.602000 Aries file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Aries.txt
+LOG: 2016-12-01 16:40:03.605000 Star file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Stars.txt
+LOG: 2016-12-01 16:40:03.610000 Aldebaran	2017-03-01	230405	15d1.5
+LOG: 2016-12-01 16:40:03.615000 End of sighting file: CA02_300_InvalidTime.xml

@@ -1,4 +1,5 @@
 #LOC made = 35 (10/24/16)
+#LOC total = 153 (12/1/16)
 import math
 class TCurve(object):
 
@@ -61,6 +62,7 @@ class TCurve(object):
         exponent = -(n + 1.0) / 2
         result = base ** exponent
         return result
+#above = 50 LOC
     
     def testingTemp(self, u, n):
         return u
@@ -137,4 +139,4 @@ class TCurve(object):
         result = simpsonNew
                 
         return result
-
+#above = 85 LOC (12/1/16)

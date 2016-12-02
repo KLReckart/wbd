@@ -1,0 +1,6 @@
+LOG: 2016-11-30 20:55:45.467000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\logea06708325ea.txt
+LOG: 2016-11-30 20:55:45.472000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_300_ValidStarLatLon.xml
+LOG: 2016-11-30 20:55:45.502000 Aries file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Aries.txt
+LOG: 2016-11-30 20:55:45.506000 Star file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Stars.txt
+LOG: 2016-11-30 20:55:45.514000 Sabik	2017-01-01	03:00:00	9d54.7
+LOG: 2016-11-30 20:55:45.518000 End of sighting file: CA03_300_ValidStarLatLon.xml

@@ -1,3 +1,4 @@
+#LOC = 24 (12/1/16)
 class Aries():
     
     def __init__(self):

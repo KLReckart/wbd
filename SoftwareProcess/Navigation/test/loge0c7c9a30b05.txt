@@ -1,0 +1,5 @@
+LOG: 2016-11-30 10:39:23.867000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\loge0c7c9a30b05.txt
+LOG: 2016-11-30 10:39:23.878000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA02_300_InvalidWithMissingMandatoryTags.xml
+LOG: 2016-11-30 10:39:23.899000 Aries file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Aries.txt
+LOG: 2016-11-30 10:39:23.909000 Star file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Stars.txt
+LOG: 2016-11-30 10:39:23.920000 None	None	None	

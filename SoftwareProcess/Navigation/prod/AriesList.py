@@ -1,3 +1,4 @@
+#LOC = 29 (12/1/16)
 import Navigation.prod.Aries as Aries
 from operator import attrgetter
 

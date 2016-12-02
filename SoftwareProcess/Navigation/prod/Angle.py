@@ -1,4 +1,5 @@
 #LOC = 151 (10/24/16)
+#LOC = 153 (12/1/16)
 import math
 
 class Angle():
@@ -82,6 +83,7 @@ class Angle():
         result = (degreeIN - int(degreeIN)) * 60.0
         #print("mins: " + str(degreeIN) + "->" + str(result))
         return result
+#above = 50 LOC
     
     def setDegrees(self, degrees=0.0):
         #default to zero if no numerical value 
@@ -170,6 +172,7 @@ class Angle():
             #if the result is Less Than 0, add 360 until .G.E. 0
             while sumVal < 0.0 :
                 sumVal = sumVal + 360.0
+#above = 100 LOC
                 pass
             #if the result is Greater Than360, subtract until .L.E. 360
             while sumVal >= 360.0 :
@@ -253,6 +256,7 @@ class Angle():
     def tangent(self):
         #get the angle in degrees with self.getDegrees()
         angleInDegrees = self.getDegrees()
+#above = 150 LOC
         #convert the degrees to radians with math.radians(degreesIN)
         angleInRadians = math.radians(angleInDegrees)
         #math.tan(angle) where angle is in radians
@@ -260,4 +264,4 @@ class Angle():
         #convert radians to degrees with degrees(radiansIN)
         #result = math.degrees(result)
         return result
-    
+#above = 153 LOC (12/1/16)

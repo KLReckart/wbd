@@ -1,0 +1,5 @@
+LOG: 2016-11-30 20:55:45.384000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log9d7fb1176943.txt
+LOG: 2016-11-30 20:55:45.390000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA02_300_InvalidTemperature.xml
+LOG: 2016-11-30 20:55:45.395000 Star file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Stars.txt
+LOG: 2016-11-30 20:55:45.400000 Aries file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Aries.txt
+LOG: 2016-11-30 20:55:45.408000 Aldebaran	2017-03-01	23:40:01	14d55.1

@@ -1,3 +1,4 @@
+#LOC = 31 (12/1/16)
 class Star():
     
     def __init__(self):

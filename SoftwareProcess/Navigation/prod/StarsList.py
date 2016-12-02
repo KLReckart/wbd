@@ -1,3 +1,4 @@
+#LOC = 27 (12/1/16)
 import Navigation.prod.Star as Star
 from operator import attrgetter
 
