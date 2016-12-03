@@ -1,2 +1,0 @@
-LOG: 2016-12-01 20:52:12.371000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\logec375394a4f0.txt
-LOG: 2016-12-01 20:52:12.375000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA02_300_InvalidObservation.xml

@@ -1,2 +1,0 @@
-LOG: 2016-11-30 10:39:02.386000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\logbdbc7d1506c0.txt
-LOG: 2016-11-30 10:39:02.392000 Star file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt

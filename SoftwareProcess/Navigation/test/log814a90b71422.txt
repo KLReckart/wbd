@@ -1,2 +1,0 @@
-LOG: 2016-12-01 20:52:12.277000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log814a90b71422.txt
-LOG: 2016-12-01 20:52:12.282000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA02_300_ValidOneStarArtificialHorizon.xml

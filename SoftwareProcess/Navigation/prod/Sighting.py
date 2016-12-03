@@ -12,6 +12,10 @@ class Sighting():
         self.temp = None
         self.pressure = None
         self.horizon = None
+        self.geoLatitude = None  #geographical latitude
+        self.geoLongitude = None #geographical longitude
+        self.azimuthAdjument = None
+        self.distanceAdjustment = None
         #note: body, date, time, and observation are mandatory
 #   GET FUNCTIONS
     def getBody(self):
@@ -38,6 +42,18 @@ class Sighting():
     def getHorizon(self):
         return self.horizon
     
+    def getGeoLatitude(self):
+        return self.geoLatitude
+    
+    def getGeoLongitude(self):
+        return self.geoLongitude
+    
+    def getAzimuthAdjustment(self):
+        return self.azimuthAdjument
+    
+    def getDistanceAdjustment(self):
+        return self.distanceAdjustment
+    
 #   SET FUNCTIONS
     def setBody(self, bodyIN):
         self.body = bodyIN
@@ -62,7 +78,19 @@ class Sighting():
         
     def setHorizon(self, horizonIN):
         self.horizon = horizonIN
-
+    
+    def setGeoLatitude(self, latitudeIN):
+        self.geoLatitude = latitudeIN
+        
+    def setGeoLongitude(self, longitudeIN):
+        self.geoLongitude = longitudeIN
+        
+    def setAzimuthAdjustment(self, adjustIN):
+        self.azimuthAdjument = adjustIN
+        
+    def setDistanceAdjustment(self, adjustIN):
+        self.distanceAdjustment = adjustIN
+    
 #   PRINT FUNCTION
     def printSighting(self):
         stringToPrint = (str(self.body) + "\t" + str(self.date) + "\t" + str(self.time) + "\t" + str(self.observation) + "\t"

@@ -31,8 +31,9 @@ class Fix():
             self.sightingsErrors = 0;
             
             #initialize the SightingsList, AriesList, and StarList
-            
-            
+            self.sightingsList = SightingsList.SightingsList()
+            self.ariesList = SightingsList.SightingsList()
+            self.starsList = StarsList.StarsList()          
             
             #create or append the file with the desired name
             try:
@@ -147,7 +148,7 @@ class Fix():
             #raise ValueError(funcName + ":  has an invalid or Null input")
         return result
     
-    def getSightings(self):
+    def getSightings(self, assumedLat, assumedLong):
         result = ("0d0.0", "0d0.0")
         funcName = "Fix.getSightings"
         
@@ -218,21 +219,26 @@ class Fix():
             # b/c the next few values need to be converted to int or floats, there is more code to ensure this before setting Sighting object values
             if len(aSighting.getElementsByTagName('height')) > 0:
                 thisHeight = aSighting.getElementsByTagName('height')[0].firstChild.data
+                print "height: " + thisHeight
                 #below explains why need a thisCanBeAFloat and thisCanBeAnInt
                 #https://www.peterbe.com/plog/interesting-casting-in-python
                 if self.thisCanBeAFloat(thisHeight) == True or self.thisCanBeAnInt(thisHeight) == True:
                     #check for int first!!!
                     if self.thisCanBeAnInt(thisHeight) == True:
                         currentSighting.setHeight(int(thisHeight))
+
                     elif self.thisCanBeAFloat(thisHeight) == True:
                         currentSighting.setHeight(float(thisHeight))
-                    else:
-                        #do not set the height
-                        result = False
-                        errorString = "could not set Height\n"
+
+                else:
+                    #do not set the height
+                    result = False
+                    errorString = "could not set Height\n"
+
             else:
                 #no height, so set default
                 currentSighting.setHeight(0.0)
+                print "no height found"
             if len(aSighting.getElementsByTagName('pressure')) > 0:
                 thisPressure = aSighting.getElementsByTagName('pressure')[0].firstChild.data
                 if self.thisCanBeAnInt(thisPressure) == True:
@@ -281,22 +287,26 @@ class Fix():
             
             #add currentSighting to the SightingsList object
             
-            #if have time come back and do the above and sort the list by date, body, etc
-            # for now, just write sighting to log file
-            stringToWrite = ("LOG: " + str(datetime.today()) + " " + str(currentSighting.getBody()) + "\t" + str(currentSighting.getDate()) + "\t"
-                + str(currentSighting.getTime()) + "\t" 
-                + str(self.calcAdjustedAlt(currentSighting.getHeight(), currentSighting.getPressure(), currentSighting.getTemp(),
+            #if result = False, there was a sighting error; increment sightingsErrors by 1
+            if (result == False):
+                self.sightingsErrors = self.sightingsErrors + 1 #increment the sightingsErrors by 1
+            
+            #else there was no sighting error, so write valid log entry
+            else:
+                #if have time come back and do the above and sort the list by date, body, etc
+                # for now, just write sighting to log file
+                stringToWrite = ("LOG: " + str(datetime.today()) + " " + str(currentSighting.getBody()) + "\t" + str(currentSighting.getDate()) + "\t"
+                    + str(currentSighting.getTime()) + "\t" 
+                    + str(self.calcAdjustedAlt(currentSighting.getHeight(), currentSighting.getPressure(), currentSighting.getTemp(),
                                             currentSighting.getObservation(), currentSighting.getHorizon())))
-            print "stringToWrite: " + stringToWrite
-            logFile.write(stringToWrite + "\n")
+                #print "stringToWrite: " + stringToWrite
+                logFile.write(stringToWrite + "\n")
             
         #done looping through site file
         logFile.close()
-        print "getData errorString:\n" + errorString
+        #print "error string: " + errorString + "\n"
         
-        #if result = False, there was a sighting error; increment sightingsErrors by 1
-        if (result == False):
-            self.sightingsErrors = self.sightingsErrors + 1 #increment the sightingsErrors by 1
+        
         return result
     
     #returns True if the obersvationIN is a valid observation,
@@ -317,7 +327,7 @@ class Fix():
         result = False
         #check that the input is a numeric that is greater than or equal to zero
         try:
-            if isinstance(heightIN, int) == True or isinstance(heightIN, float) == True:
+            if self.thisCanBeAnInt(heightIN) == True or self.thisCanBeAFloat(heightIN) == True:
                 # then the value is a numeric
                 # let's check >= zero
                 if heightIN >= 0:
@@ -424,7 +434,7 @@ class Fix():
         if self.checkValidTextFileName(ariesFile) == True:
             
             #check that the file exists, if not, raise error; else, set result
-            if os.path.exists(os.path.abspath(ariesFile)) == False:
+            if os.path.isfile(ariesFile) == False:
                 raise ValueError(funcName + ":  aries file does not exist")
             else:
                 result = str(os.path.abspath(ariesFile))
@@ -450,7 +460,7 @@ class Fix():
         if self.checkValidTextFileName(starFile) == True:
             
             #check that the file exists, if not, raise error; else, set result
-            if os.path.exists(os.path.abspath(starFile)) == False:
+            if os.path.isfile(starFile) == False:
                 raise ValueError(funcName + ":  star file does not exist")
             else:
                 result = str(os.path.abspath(starFile))
@@ -488,4 +498,35 @@ class Fix():
         #
         pass
     
+    def calcApproxLat(self, assumedLat):
+        
+        pass
+        
+    def calcApproxLong(self):
+        
+        pass
+        
+    def calcLocalHourAngle(self):
+        
+        pass
+        
+    def calcCorrectedAltitude(self):
+        
+        pass
+        
+    def calcDistanceAdj(self):
+        
+        pass
+        
+    def calcAzimuthAdj(self):
+        
+        pass
+        
+    def validAssumedLat(self):
+        
+        pass
+    
+    def validAssumedLong(self):
+        
+        pass
 #above = 292 LOC (12/1/16)

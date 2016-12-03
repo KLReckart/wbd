@@ -1,3 +1,0 @@
-LOG: 2016-12-01 20:52:12.391000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log9c514063b4c3.txt
-LOG: 2016-12-01 20:52:12.396000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA02_300_InvalidTemperature.xml
-LOG: 2016-12-01 20:52:12.399000 Star file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Stars.txt

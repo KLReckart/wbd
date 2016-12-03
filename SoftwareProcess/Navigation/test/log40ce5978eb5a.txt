@@ -1,4 +1,0 @@
-LOG: 2016-12-01 16:37:42.184000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log40ce5978eb5a.txt
-LOG: 2016-12-01 16:37:42.190000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA02_300_InvalidObservation.xml
-LOG: 2016-12-01 16:37:42.209000 Aries file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Aries.txt
-LOG: 2016-12-01 16:37:42.213000 Star file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Stars.txt

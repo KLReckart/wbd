@@ -1,3 +1,0 @@
-LOG: 2016-12-01 20:52:12.426000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log6388d2f62ed3.txt
-LOG: 2016-12-01 20:52:12.430000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA02_300_InvalidHorizon.xml
-LOG: 2016-12-01 20:52:12.434000 Star file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Stars.txt

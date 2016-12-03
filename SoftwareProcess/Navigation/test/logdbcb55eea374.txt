@@ -1,1 +1,0 @@
-LOG: 2016-12-01 20:42:50.528000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\logdbcb55eea374.txt

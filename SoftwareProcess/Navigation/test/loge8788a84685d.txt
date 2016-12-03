@@ -1,2 +1,0 @@
-LOG: 2016-12-01 20:52:12.451000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\loge8788a84685d.txt
-LOG: 2016-12-01 20:52:12.455000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_300_ValidStarLatLonInterpolationRequired.xml

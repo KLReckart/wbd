@@ -1,6 +1,0 @@
-LOG: 2016-12-01 16:37:42.005000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\loga4a845a7e3e1.txt
-LOG: 2016-12-01 16:37:42.009000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA02_300_InvalidBody.xml
-LOG: 2016-12-01 16:37:42.013000 Aries file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Aries.txt
-LOG: 2016-12-01 16:37:42.017000 Star file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Stars.txt
-LOG: 2016-12-01 16:37:42.022000 None	None	None	
-LOG: 2016-12-01 16:37:42.026000 End of sighting file: CA02_300_InvalidBody.xml

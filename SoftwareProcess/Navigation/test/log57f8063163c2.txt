@@ -1,2 +1,0 @@
-LOG: 2016-12-01 20:52:12.361000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log57f8063163c2.txt
-LOG: 2016-12-01 20:52:12.366000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA02_300_InvalidTime.xml

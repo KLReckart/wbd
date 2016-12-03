@@ -1,2 +1,0 @@
-LOG: 2016-12-01 20:52:12.295000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log4c1b92e24051.txt
-LOG: 2016-12-01 20:52:12.300000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA02_300_ValidOneStarWithDefaultValues.xml
