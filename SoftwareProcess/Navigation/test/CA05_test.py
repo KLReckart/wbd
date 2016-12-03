@@ -71,20 +71,20 @@ class FixTest_CA05(unittest.TestCase):
         
     def test100_02testDefaultLongitudeInput(self):
         #create Fix object
-        thisFix = F.Fix()
+        thisFix02 = F.Fix()
         
         #set aries, sighting, and star files
         ariesFile = self.ariesFileName
         sightFile = self.sightFileName
         starFile = self.starFileName
         
-        file01 = thisFix.setSightingFile(sightFile)
-        file02 = thisFix.setAriesFile(ariesFile)
-        file03 = thisFix.setStarFile(starFile)
+        file01 = thisFix02.setSightingFile(sightFile)
+        file02 = thisFix02.setAriesFile(ariesFile)
+        file03 = thisFix02.setStarFile(starFile)
         
         #test return
-        getResult = thisFix.getSightings("N27d59.5")
-        result = thisFix.adjustedLat
+        getResult = thisFix02.getSightings("N27d59.5")
+        result = thisFix02.assumedLong
         expected = ("0d0.0")
         self.assertEquals(result, expected, str(result) + " != " + str(expected))
         
@@ -105,13 +105,33 @@ class FixTest_CA05(unittest.TestCase):
         file03 = thisFix.setStarFile(starFile)
         
         #test return
-        getResult = thisFix.getSightings(assumedLong="85d33.4")
-        result = thisFix.adjustedLong
+        getResult = thisFix.getSightings(assumedLongIN="85d33.4")
+        result = thisFix.assumedLat
         expected = ("0d0.0")
         self.assertEquals(result, expected, str(result) + " != " + str(expected))
         pass
     
     def test100_04testDefaultInputs(self):
+        #create Fix object
+        thisFix = F.Fix()
+        
+        #set aries, sighting, and star files
+        
+        ariesFile = self.ariesFileName
+        sightFile = self.sightFileName
+        starFile = self.starFileName
+        
+        file01 = thisFix.setSightingFile(sightFile)
+        file02 = thisFix.setAriesFile(ariesFile)
+        file03 = thisFix.setStarFile(starFile)
+        
+        #test return
+        getResult = thisFix.getSightings()
+        result01 = thisFix.assumedLat
+        result02 = thisFix.assumedLong
+        expected = ("0d0.0")
+        self.assertEquals(result01, expected, str(result01) + " != " + str(expected))
+        self.assertEquals(result02, expected, str(result01) + " != " + str(expected))
         
         pass
     

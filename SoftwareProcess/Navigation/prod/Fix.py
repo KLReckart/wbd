@@ -35,9 +35,9 @@ class Fix():
             self.ariesList = AriesList.AriesList()
             self.starsList = StarsList.StarsList()
             
-            #initialize adjustedLat and adjustedLong
-            self.adjustedLat = None
-            self.adjustedLong = None
+            #initialize assumedLat and assumedLong
+            self.assumedLat = None
+            self.assumedLong = None
             
             #create or append the file with the desired name
             try:
@@ -152,9 +152,20 @@ class Fix():
             #raise ValueError(funcName + ":  has an invalid or Null input")
         return result
     
-    def getSightings(self, assumedLat, assumedLong):
+    def getSightings(self, assumedLatIN=None, assumedLongIN=None):
         result = ("0d0.0", "0d0.0")
         funcName = "Fix.getSightings"
+        
+        if assumedLatIN == None:
+            assumedLatIN = "0d0.0"
+        if assumedLongIN == None:
+            assumedLongIN = "0d0.0"
+            
+        #set Fix's assumedLat and assumedLong
+        self.assumedLat = assumedLatIN
+        print "assumedLat: " + str(self.assumedLat)
+        self.assumedLong = assumedLongIN
+        print "assumedLong: " + str(self.assumedLong)
         
         #if aries, sighting, and star files have been set -> proceed; else, raise error 
         
