@@ -67,9 +67,29 @@ class FixTest_CA05(unittest.TestCase):
         expected = ("N29d6.8", "82d52.9")
         self.assertEquals(result, expected, str(result) + " != " + str(expected))
         
+        # I have decide to come back to this test last, after performing TDD on all other tests since the other tests are
+        #  less complex
         pass
         
     def test100_02testDefaultLongitudeInput(self):
+        #create Fix object
+        thisFix = F.Fix()
+        
+        #set aries, sighting, and star files
+        
+        ariesFile = self.ariesFileName
+        sightFile = self.sightFileName
+        starFile = self.starFileName
+        
+        file01 = thisFix.setSightingFile(sightFile)
+        file02 = thisFix.setAriesFile(ariesFile)
+        file03 = thisFix.setStarFile(starFile)
+        
+        #test return
+        getResult = thisFix.getSightings("N27d59.5", "85d33.4")
+        result = thisFix.adjustedLat
+        expected = ("0d0.0")
+        self.assertEquals(result, expected, str(result) + " != " + str(expected))
         
         pass
         

@@ -32,8 +32,12 @@ class Fix():
             
             #initialize the SightingsList, AriesList, and StarList
             self.sightingsList = SightingsList.SightingsList()
-            self.ariesList = SightingsList.SightingsList()
-            self.starsList = StarsList.StarsList()          
+            self.ariesList = AriesList.AriesList()
+            self.starsList = StarsList.StarsList()
+            
+            #initialize adjustedLat and adjustedLong
+            self.adjustedLat = None
+            self.adjustedLong = None
             
             #create or append the file with the desired name
             try:
