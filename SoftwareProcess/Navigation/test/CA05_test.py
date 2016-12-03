@@ -48,12 +48,10 @@ class FixTest_CA05(unittest.TestCase):
 # *** HAPPY PATH TESTS
 
     def test100_01testNormalOutput(self):
-        
         #create Fix object
         thisFix = F.Fix()
         
         #set aries, sighting, and star files
-        
         ariesFile = self.ariesFileName
         sightFile = self.sightFileName
         starFile = self.starFileName
@@ -76,6 +74,27 @@ class FixTest_CA05(unittest.TestCase):
         thisFix = F.Fix()
         
         #set aries, sighting, and star files
+        ariesFile = self.ariesFileName
+        sightFile = self.sightFileName
+        starFile = self.starFileName
+        
+        file01 = thisFix.setSightingFile(sightFile)
+        file02 = thisFix.setAriesFile(ariesFile)
+        file03 = thisFix.setStarFile(starFile)
+        
+        #test return
+        getResult = thisFix.getSightings("N27d59.5")
+        result = thisFix.adjustedLat
+        expected = ("0d0.0")
+        self.assertEquals(result, expected, str(result) + " != " + str(expected))
+        
+        pass
+        
+    def test100_03testDefaultLatitudeInput(self):
+        #create Fix object
+        thisFix = F.Fix()
+        
+        #set aries, sighting, and star files
         
         ariesFile = self.ariesFileName
         sightFile = self.sightFileName
@@ -86,15 +105,10 @@ class FixTest_CA05(unittest.TestCase):
         file03 = thisFix.setStarFile(starFile)
         
         #test return
-        getResult = thisFix.getSightings("N27d59.5", "85d33.4")
-        result = thisFix.adjustedLat
+        getResult = thisFix.getSightings(assumedLong="85d33.4")
+        result = thisFix.adjustedLong
         expected = ("0d0.0")
         self.assertEquals(result, expected, str(result) + " != " + str(expected))
-        
-        pass
-        
-    def test100_03testDefaultLatitudeInput(self):
-        
         pass
     
     def test100_04testDefaultInputs(self):
