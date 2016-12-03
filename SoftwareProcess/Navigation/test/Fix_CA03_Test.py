@@ -2,7 +2,7 @@
 Created on 10/10/16
 @author: Kristi Reckart
 
-Purpose: tests the new changes to the Fix class from CA02 to CA03 AND tests the new additions to the Fix class from CA02 to CA03
+Purpose: tests the new changes to the Fix class from CA03 to CA05 AND tests the new additions to the Fix class from CA03 to CA05
 
 '''
 

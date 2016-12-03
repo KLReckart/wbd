@@ -161,6 +161,11 @@ class Fix():
         if assumedLongIN == None:
             assumedLongIN = "0d0.0"
             
+        #check if assumedLatIN is valid
+        flag1 = self.validAssumedLat(assumedLatIN)
+        
+        if flag1 == False:
+            raise ValueError(funcName + ":  invalid latitude or longitude input")
         #set Fix's assumedLat and assumedLong
         self.assumedLat = assumedLatIN
         print "assumedLat: " + str(self.assumedLat)
@@ -537,9 +542,50 @@ class Fix():
         
         pass
         
-    def validAssumedLat(self):
+    def validAssumedLat(self, assumedLatIN):
+        result = False #assume the value in is invalid until proven otherwise
+        #if assumedLatIN is <> None, run more checks to see if valid
+        if assumedLatIN <> None:
+            #check if value is is a string
+            if isinstance(assumedLatIN, str) == True:
+                #check that value is a non-empty string
+                if len(assumedLatIN) > 0:
+                    #if first char of string is 'S' or 'N' (EX: S1d1.1), then break up the string into 2 parts, the char and angle
+                    inputAsChars = list(assumedLatIN)
+                    firstChar = inputAsChars[0]
+                    if firstChar == "S" or firstChar == "N":
+                    
+                        #check that the angle part has a 'd'
+                        print "assumedLatIN has S or N: " + str(assumedLatIN) + "\n"
+                        
+                        #if yes, continue to check if valid
+                    
+                        #check that angle part does not equal '0d0.0'
+                    
+                        #if yes, continue to check if valid
+                    
+                        #split angle into part before and after 'd'
+                    
+                        #check if part before 'd' is an integer that is greater than or equal to 0 and less than 90
+                    
+                        #if yes, continue to check if valid
+                    
+                        #check if part after d is a float that is greater than or equal to 0 and less than 60
+                    
+                        #if yes, then result = True
+                        result = True
+                    #if first char is not 'S' or 'N', check if equal to '0d0.0'
+                    #if yes, then result = True
+                    elif assumedLatIN == "0d0.0":
+                        result = True
+            
+            
+            
         
-        pass
+        #else, keep result = invalid (AKA False)
+        
+        
+        return result
     
     def validAssumedLong(self):
         
