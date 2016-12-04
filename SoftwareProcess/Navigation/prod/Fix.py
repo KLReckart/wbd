@@ -553,27 +553,33 @@ class Fix():
                     #if first char of string is 'S' or 'N' (EX: S1d1.1), then break up the string into 2 parts, the char and angle
                     inputAsChars = list(assumedLatIN)
                     firstChar = inputAsChars[0]
+                    angleChars = inputAsChars[1:(len(inputAsChars)-1)]
+                    #convert angleChars to a single string
+                    angleString = "".join(angleChars)
                     if firstChar == "S" or firstChar == "N":
                     
                         #check that the angle part has a 'd'
                         print "assumedLatIN has S or N: " + str(assumedLatIN) + "\n"
+                        # does angleString have only 1 'd'
+                        countD = assumedLatIN.count("d")
                         
                         #if yes, continue to check if valid
+                        if (countD == 1):
+                            
+                            #check that angle part does not equal '0d0.0'
+                            
+                            #if yes, continue to check if valid
+                            if (angleString <> "0d0.0"):
+                                #split angle into part before and after 'd'
+                                
+                                #check if part before 'd' is an integer that is greater than or equal to 0 and less than 90
+                                
+                                #if yes, continue to check if valid
+                                
+                                #check if part after d is a float that is greater than or equal to 0 and less than 60
                     
-                        #check that angle part does not equal '0d0.0'
-                    
-                        #if yes, continue to check if valid
-                    
-                        #split angle into part before and after 'd'
-                    
-                        #check if part before 'd' is an integer that is greater than or equal to 0 and less than 90
-                    
-                        #if yes, continue to check if valid
-                    
-                        #check if part after d is a float that is greater than or equal to 0 and less than 60
-                    
-                        #if yes, then result = True
-                        result = True
+                                #if yes, then result = True
+                                result = True
                     #if first char is not 'S' or 'N', check if equal to '0d0.0'
                     #if yes, then result = True
                     elif assumedLatIN == "0d0.0":
