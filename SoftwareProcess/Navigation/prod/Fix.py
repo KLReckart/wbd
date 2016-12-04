@@ -590,8 +590,8 @@ class Fix():
                                         print("hasDecimal: " + str(hasDecimal))
                                         if (hasDecimal == 1 and 
                                             isinstance(float(splitStringList[1]), float) and 
-                                            float(splitStringList[1]) >= 0 
-                                            and float(splitStringList[0]) < 60):
+                                            float(splitStringList[1]) >= 0.0 
+                                            and float(splitStringList[1]) < 60.0):
                                             
                                             print("second part of assumed lat is a float >= 0 and < 60")
                                             result = True
