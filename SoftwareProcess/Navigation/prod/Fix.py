@@ -163,9 +163,11 @@ class Fix():
             
         #check if assumedLatIN is valid
         print (assumedLatIN)
+        print (assumedLongIN)
         flag1 = self.validAssumedLat(assumedLatIN)
+        flag2 = self.validAssumedLong(assumedLongIN)
         
-        if flag1 == False:
+        if (flag1 == False or flag2 == False):
             raise ValueError(funcName + ":  invalid latitude or longitude input")
         #set Fix's assumedLat and assumedLong
         self.assumedLat = assumedLatIN
@@ -551,17 +553,63 @@ class Fix():
             if isinstance(assumedLatIN, str) == True:
                 #check that value is a non-empty string
                 if len(assumedLatIN) > 0:
+                    #check that the angle part has a 'd'
+                    # does angleString have only 1 'd'
+                    countD = assumedLatIN.count("d")
+                    #if yes, continue to check if valid
+                    if (countD == 1):
+                        #split angle into part before and after 'd'
+                        splitStringList = assumedLatIN.split("d")
+                        
+                        try:
+                            #check if part before 'd' is an integer that is greater than or equal to 0 and 
+                            # less than 90
+                            #if yes, continue to check if valid
+                            print ("before 'd' value: " + splitStringList[0])
+                            if (isinstance(int(splitStringList[0]), int) and int(splitStringList[0]) >= 0 
+                                and int(splitStringList[0]) < 90):
+                                        
+                                print ("first part of assumed lat is an int that is >= 0 and < 90\n")
+                                    
+                                #check if part after d is a float that is greater than or equal to 0 and 
+                                # less than 60
+                                #if yes, then result = True
+                                print("after 'd' value: " + splitStringList[1])
+                                hasDecimal = splitStringList[1].count(".")
+                                print("hasDecimal: " + str(hasDecimal))
+                                if (hasDecimal == 1 and 
+                                    isinstance(float(splitStringList[1]), float) and 
+                                    float(splitStringList[1]) >= 0.0 
+                                    and float(splitStringList[1]) < 60.0):
+                                            
+                                    print("second part of assumed lat is a float >= 0 and < 60")
+                                    result = True
+                        except:
+                            result = False
+        
+        #else, keep result = invalid (AKA False)
+        
+        return result
+    
+    def validAssumedLong(self, assumedLongIN):
+        result = False #assume the value in is invalid until proven otherwise
+        #if assumedLatIN is <> None, run more checks to see if valid
+        if assumedLongIN <> None:
+            #check if value is is a string
+            if isinstance(assumedLongIN, str) == True:
+                #check that value is a non-empty string
+                if len(assumedLongIN) > 0:
                     #if first char of string is 'S' or 'N' (EX: S1d1.1), then break up the string into 2 parts, the char and angle
-                    inputAsChars = list(assumedLatIN)
+                    inputAsChars = list(assumedLongIN)
                     firstChar = inputAsChars[0]
                     angleChars = inputAsChars[1:len(inputAsChars)]
                     #convert angleChars to a single string
                     angleString = "".join(angleChars)
                     if (firstChar == "S" or firstChar == "N"):
                         #check that the angle part has a 'd'
-                        print "assumedLatIN has S or N: " + str(assumedLatIN) + "\n"
+                        print "assumedLatIN has S or N: " + str(assumedLongIN) + "\n"
                         # does angleString have only 1 'd'
-                        countD = assumedLatIN.count("d")
+                        countD = assumedLongIN.count("d")
                         #if yes, continue to check if valid
                         if (countD == 1):
                             #check that angle part does not equal '0d0.0'
@@ -599,16 +647,10 @@ class Fix():
                                     result = False
                     #if first char is not 'S' or 'N', check if equal to '0d0.0'
                     #if yes, then result = True
-                    elif (assumedLatIN == "0d0.0"):
+                    elif (assumedLongIN == "0d0.0"):
                             result = True
             
         
         #else, keep result = invalid (AKA False)
-        
-        
         return result
-    
-    def validAssumedLong(self):
-        
-        pass
 #above = 292 LOC (12/1/16)
