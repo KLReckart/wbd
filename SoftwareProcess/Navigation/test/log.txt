@@ -1,0 +1,8 @@
+LOG: 2016-12-04 13:19:08.504000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-12-04 13:19:08.504000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\sightFile.xml
+LOG: 2016-12-04 13:19:08.520000 Aries file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Aries.txt
+LOG: 2016-12-04 13:19:08.520000 Star file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Stars.txt
+LOG: 2016-12-04 13:19:08.520000 Unknown	2017-04-17	10:30:30	94d12.2
+LOG: 2016-12-04 13:19:08.535000 Pollux	2016-04-14	23:50:14	15d1.5
+Sighting errors:	0
+LOG: 2016-12-04 13:19:08.535000 End of sighting file: sightFile.xml

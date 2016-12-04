@@ -150,15 +150,12 @@ class FixTest_CA05(unittest.TestCase):
         thisFix = F.Fix()
         
         #set aries, sighting, and star files
-        
         ariesFile = self.ariesFileName
         sightFile = self.sightFileName
         starFile = self.starFileName
-        
         file01 = thisFix.setSightingFile(sightFile)
         file02 = thisFix.setAriesFile(ariesFile)
         file03 = thisFix.setStarFile(starFile)
-        
         
         expectedError = "Fix.getSightings:  invalid latitude or longitude input"
         
@@ -250,5 +247,72 @@ class FixTest_CA05(unittest.TestCase):
         pass
     
     def test100_07testInvalidLongInputs(self):
+        #create Fix object
+        thisFix = F.Fix()
+        
+        #set aries, sighting, and star files
+        ariesFile = self.ariesFileName
+        sightFile = self.sightFileName
+        starFile = self.starFileName
+        file01 = thisFix.setSightingFile(sightFile)
+        file02 = thisFix.setAriesFile(ariesFile)
+        file03 = thisFix.setStarFile(starFile)
+        
+        expectedError = "Fix.getSightings:  invalid latitude or longitude input"
+        
+        #test getSightings("N27d59.5", "")
+        with self.assertRaises(ValueError) as context:
+            result01 = thisFix.getSightings("N27d59.5", "")
+        self.assertEquals(expectedError, context.exception.args[0][0:len(expectedError)], str(expectedError) 
+                          + " != " + str(context.exception.args[0][0:len(expectedError)]))
+        
+        #test getSightings("N27d59.5", 5)
+        with self.assertRaises(ValueError) as context:
+            result02 = thisFix.getSightings("N27d59.5", 5)
+        self.assertEquals(expectedError, context.exception.args[0][0:len(expectedError)], str(expectedError) 
+                          + " != " + str(context.exception.args[0][0:len(expectedError)]))
+        
+        #test getSightings("N27d59.5", "00.0")
+        with self.assertRaises(ValueError) as context:
+            result03 = thisFix.getSightings("N27d59.5", "00.0")
+        self.assertEquals(expectedError, context.exception.args[0][0:len(expectedError)], str(expectedError) 
+                          + " != " + str(context.exception.args[0][0:len(expectedError)]))
+        
+        #test getSightings("N27d59.5", "1.1d0.0")
+        with self.assertRaises(ValueError) as context:
+            result04 = thisFix.getSightings("N27d59.5", "1.1d0.0")
+        self.assertEquals(expectedError, context.exception.args[0][0:len(expectedError)], str(expectedError) 
+                          + " != " + str(context.exception.args[0][0:len(expectedError)]))
+        
+        #test getSightings("N27d59.5", "-1d0.0")
+        with self.assertRaises(ValueError) as context:
+            result05 = thisFix.getSightings("N27d59.5", "-1d0.0")
+        self.assertEquals(expectedError, context.exception.args[0][0:len(expectedError)], str(expectedError) 
+                          + " != " + str(context.exception.args[0][0:len(expectedError)]))
+        
+        #test getSightings("N27d59.5", "3600d0.0")
+        with self.assertRaises(ValueError) as context:
+            result06 = thisFix.getSightings("N27d59.5", "3600d0.0")
+        self.assertEquals(expectedError, context.exception.args[0][0:len(expectedError)], str(expectedError) 
+                          + " != " + str(context.exception.args[0][0:len(expectedError)]))
+        
+        #test getSightings("N27d59.5", "S0d0")
+        with self.assertRaises(ValueError) as context:
+            result07 = thisFix.getSightings("N27d59.5", "S0d0")
+        self.assertEquals(expectedError, context.exception.args[0][0:len(expectedError)], str(expectedError) 
+                          + " != " + str(context.exception.args[0][0:len(expectedError)]))
+        
+        #test getSightings("N27d59.5", "S0d-1.0")
+        with self.assertRaises(ValueError) as context:
+            result08 = thisFix.getSightings("N27d59.5", "S0d-1.0")
+        self.assertEquals(expectedError, context.exception.args[0][0:len(expectedError)], str(expectedError) 
+                          + " != " + str(context.exception.args[0][0:len(expectedError)]))
+        
+        #test getSightings("N27d59.5", "S0d60.0")
+        with self.assertRaises(ValueError) as context:
+            result09 = thisFix.getSightings("N27d59.5", "S0d60.0")
+        self.assertEquals(expectedError, context.exception.args[0][0:len(expectedError)], str(expectedError) 
+                          + " != " + str(context.exception.args[0][0:len(expectedError)]))
+        
         
         pass
