@@ -1,4 +1,4 @@
-LOG: 2016-12-04 13:45:35.607000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
-LOG: 2016-12-04 13:45:35.607000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\sightFile.xml
-LOG: 2016-12-04 13:45:35.623000 Aries file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Aries.txt
-LOG: 2016-12-04 13:45:35.623000 Star file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Stars.txt
+LOG: 2016-12-04 13:51:02.828000 Log file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-12-04 13:51:02.828000 Sighting file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\sightFile.xml
+LOG: 2016-12-04 13:51:02.844000 Aries file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Aries.txt
+LOG: 2016-12-04 13:51:02.844000 Star file:	C:\College\GitRepository\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Stars.txt
