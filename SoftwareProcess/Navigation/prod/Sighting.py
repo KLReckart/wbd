@@ -1,5 +1,11 @@
+'''
+Created on October 15, 2016
+
+@author: Kristi Reckart
+'''
 #LOC = 42 (10/24/16)
 #LOC = 47 (12/1/16)
+#LOC = 67 (12/4/16)
 class Sighting():
     
     def __init__(self):
@@ -72,6 +78,7 @@ class Sighting():
         
     def setTemp(self, tempIN):
         self.temp = tempIN
+#LOC above = 50
         
     def setPressure(self, pressureIN):
         self.pressure = pressureIN

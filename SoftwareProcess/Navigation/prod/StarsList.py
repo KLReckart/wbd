@@ -1,3 +1,9 @@
+'''
+Created on October 31, 2016
+
+@author: Kristi Reckart
+'''
+
 #LOC = 27 (12/1/16)
 import Navigation.prod.Star as Star
 from operator import attrgetter

@@ -1,5 +1,12 @@
+'''
+Created on October 12, 2016
+
+@author: Kristi Reckart
+'''
+
 #LOC = 191 (10/24/16)
 #LOC = 292 (12/1/16)
+#LOC = 391 (12/4/16)
 from datetime import datetime
 import os
 import math
@@ -75,6 +82,7 @@ class Fix():
     def setSiteFileName(self, fileName_IN):
         self.siteFileName = fileName_IN
         pass
+#LOC above = 50
     
     def setAriesFileName(self, fileName_IN):
         self.ariesFileName = fileName_IN
@@ -99,7 +107,6 @@ class Fix():
                 logFile.write(stringToAdd)
                 #close the log file
                 logFile.close()
-# above = 50 LOC
             else:
                 raise ValueError(funcName + ":  sighting file does not exist in current directory")
         else:
@@ -157,6 +164,7 @@ class Fix():
         funcName = "Fix.getSightings"
         
         if assumedLatIN == None:
+#LOC above = 100
             assumedLatIN = "0d0.0"
         if assumedLongIN == None:
             assumedLongIN = "0d0.0"
@@ -207,7 +215,6 @@ class Fix():
         #get the sightings
         thisFix = xmlDocument.documentElement
         sightings = thisFix.getElementsByTagName("sighting")
-# above = 100 LOC
         #get data for each sighting
         for aSighting in sightings:
             currentSighting = Sighting.Sighting()
@@ -241,6 +248,7 @@ class Fix():
                 currentSighting.setHorizon("natural")
             # b/c the next few values need to be converted to int or floats, there is more code to ensure this before setting Sighting object values
             if len(aSighting.getElementsByTagName('height')) > 0:
+#LOC above = 150
                 thisHeight = aSighting.getElementsByTagName('height')[0].firstChild.data
                 print "height: " + thisHeight
                 #below explains why need a thisCanBeAFloat and thisCanBeAnInt
@@ -316,6 +324,7 @@ class Fix():
             
             #else there was no sighting error, so write valid log entry
             else:
+#LOC above = 200
                 #if have time come back and do the above and sort the list by date, body, etc
                 # for now, just write sighting to log file
                 stringToWrite = ("LOG: " + str(datetime.today()) + " " + str(currentSighting.getBody()) + "\t" + str(currentSighting.getDate()) + "\t"
@@ -374,7 +383,6 @@ class Fix():
                 # then the value is an int -> let's check value is [-20, 120]
                 if tempIN >= -20 and tempIN <= 120:
                     result = True
-#above = 200 LOC
                 else:
                     result = False
             else:
@@ -395,6 +403,7 @@ class Fix():
                     result = True
                 else:
                     result = False
+#LOC above = 250
             else:
                 result = False
         except:
@@ -449,7 +458,6 @@ class Fix():
             if stringIN[-4:] == ".txt" and len(stringIN) > 4:
                 result = True
         return result
-#above = 250 LOC
     
     def setAriesFile(self, ariesFile=None):
         funcName = "Fix.setAriesFile"
@@ -471,6 +479,7 @@ class Fix():
                 logFile.write(lineToWrite)
                 logFile.close()
             except:
+#LOC above = 300
                 raise ValueError(funcName + ":  cannot open and write to the log file for some reason")
         else:
             raise ValueError(funcName + ":  invalid input")
@@ -556,12 +565,13 @@ class Fix():
                     #if first char of string is 'S' or 'N' (EX: S1d1.1), then break up the string into 2 parts, the char and angle
                     inputAsChars = list(assumedLatIN)
                     firstChar = inputAsChars[0]
+#LOC above = 350
                     angleChars = inputAsChars[1:len(inputAsChars)]
                     #convert angleChars to a single string
                     angleString = "".join(angleChars)
                     if (firstChar == "S" or firstChar == "N"):
                         #check that the angle part has a 'd'
-                        print "assumedLatIN has S or N: " + str(assumedLatIN) + "\n"
+                        #print "assumedLatIN has S or N: " + str(assumedLatIN) + "\n"
                         # does angleString have only 1 'd'
                         countD = assumedLatIN.count("d")
                         #if yes, continue to check if valid
@@ -569,7 +579,7 @@ class Fix():
                             #check that angle part does not equal '0d0.0'
                             #if yes, continue to check if valid
                             if (angleString <> "0d0.0"):
-                                print ("good, angle is not 0d0.0")
+                                #print ("good, angle is not 0d0.0")
                                 #split angle into part before and after 'd'
                                 splitStringList = angleString.split("d")
                                 
@@ -577,25 +587,25 @@ class Fix():
                                     #check if part before 'd' is an integer that is greater than or equal to 0 and 
                                     # less than 90
                                     #if yes, continue to check if valid
-                                    print ("before 'd' value: " + splitStringList[0])
+                                    #print ("before 'd' value: " + splitStringList[0])
                                     if (isinstance(int(splitStringList[0]), int) and int(splitStringList[0]) >= 0 
                                         and int(splitStringList[0]) < 90):
                                         
-                                        print ("first part of assumed lat is an int that is >= 0 and < 90\n")
+                                        #print ("first part of assumed lat is an int that is >= 0 and < 90\n")
                                     
                                         #check if part after d is a float that is greater than or equal to 0 and 
                                         # less than 60
                     
                                         #if yes, then result = True
-                                        print("after 'd' value: " + splitStringList[1])
+                                        #print("after 'd' value: " + splitStringList[1])
                                         hasDecimal = splitStringList[1].count(".")
-                                        print("hasDecimal: " + str(hasDecimal))
+                                        #print("hasDecimal: " + str(hasDecimal))
                                         if (hasDecimal == 1 and 
                                             isinstance(float(splitStringList[1]), float) and 
                                             float(splitStringList[1]) >= 0.0 
                                             and float(splitStringList[1]) < 60.0):
                                             
-                                            print("second part of assumed lat is a float >= 0 and < 60")
+                                            #print("second part of assumed lat is a float >= 0 and < 60")
                                             result = True
                                 except:
                                     result = False
@@ -627,29 +637,30 @@ class Fix():
                             #check if part before 'd' is an integer that is greater than or equal to 0 and 
                             # less than 360
                             #if yes, continue to check if valid
-                            print ("before 'd' value: " + splitStringList[0])
+                            #print ("before 'd' value: " + splitStringList[0])
                             if (isinstance(int(splitStringList[0]), int) and int(splitStringList[0]) >= 0 
                                 and int(splitStringList[0]) < 360):
                                         
-                                print ("first part of assumed lat is an int that is >= 0 and < 360\n")
+                                #print ("first part of assumed lat is an int that is >= 0 and < 360\n")
                                     
                                 #check if part after d is a float that is greater than or equal to 0 and 
                                 # less than 60
                     
                                 #if yes, then result = True
-                                print("after 'd' value: " + splitStringList[1])
+                                #print("after 'd' value: " + splitStringList[1])
                                 hasDecimal = splitStringList[1].count(".")
-                                print("hasDecimal: " + str(hasDecimal))
+                                #print("hasDecimal: " + str(hasDecimal))
                                 if (hasDecimal == 1 and 
                                     isinstance(float(splitStringList[1]), float) and 
                                     float(splitStringList[1]) >= 0.0 
                                     and float(splitStringList[1]) < 60.0):
                                             
-                                    print("second part of assumed lat is a float >= 0 and < 60")
+                                    #print("second part of assumed lat is a float >= 0 and < 60")
                                     result = True
                         except:
                             result = False
             
         #else, keep result = invalid (AKA False)
         return result
-#above = 292 LOC (12/1/16)
+
+#LOC above = 391 (12/4/16)

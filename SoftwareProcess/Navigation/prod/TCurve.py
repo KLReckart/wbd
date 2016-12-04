@@ -1,3 +1,9 @@
+'''
+Created on Octber 24, 2016
+
+@author: Kristi Reckart
+'''
+
 #LOC made = 35 (10/24/16)
 #LOC total = 153 (12/1/16)
 import math

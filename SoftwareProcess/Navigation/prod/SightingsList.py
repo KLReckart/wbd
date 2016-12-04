@@ -1,3 +1,8 @@
+'''
+Created on October 15, 2016
+
+@author: Kristi Reckart
+'''
 #LOC = 15 (10/24/16) 
 #LOC = 29 (12/1/16)
 import Navigation.prod.Sighting as Sighting

@@ -1,7 +1,7 @@
 '''
 Created on Dec 2, 2016
 
-@author: Kristi
+@author: Kristi Reckart
 '''
 
 import unittest

@@ -1,3 +1,9 @@
+'''
+Created on September 11, 2016
+
+@author: Kristi Reckart
+'''
+
 #LOC = 151 (10/24/16)
 #LOC = 153 (12/1/16)
 import math

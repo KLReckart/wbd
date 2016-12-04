@@ -1,3 +1,9 @@
+'''
+Created on October 31, 2016
+
+@author: Kristi Reckart
+'''
+
 #LOC = 24 (12/1/16)
 class Aries():
     
