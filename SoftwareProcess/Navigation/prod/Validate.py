@@ -4,16 +4,11 @@ Created on December 4, 2016
 @author: Kristi Reckart
 '''
 
-#going to refactor the valid fucntions from the Fix class to here
-
-from datetime import datetime
-import os
-import math
-from xml.dom import minidom
+#refactored the valid functions from the Fix class to here
+#LOC = 128 (12/4/16)
 from __builtin__ import str
 
 import Navigation.prod.Angle as Angle
-
 
 class Validate():
     
@@ -92,6 +87,7 @@ class Validate():
                 # then the value is an int -> let's check value is [-20, 120]
                 if tempIN >= -20 and tempIN <= 120:
                     result = True
+#LOC above = 50
                 else:
                     result = False
             else:
@@ -112,7 +108,6 @@ class Validate():
                     result = True
                 else:
                     result = False
-#LOC above = 250
             else:
                 result = False
         except:
@@ -125,7 +120,6 @@ class Validate():
         result = False
         #check that the input is a string with one of two values: 'natural' or 'artificial'
         try:
-
             if horizionIN == "natural" or horizionIN == "artificial":
                 result = True
             else:
@@ -134,7 +128,6 @@ class Validate():
         except:
             result = False
         return result
-    
     
     def validAssumedLat(self, assumedLatIN):
         result = False #assume the value in is invalid until proven otherwise
@@ -147,7 +140,6 @@ class Validate():
                     #if first char of string is 'S' or 'N' (EX: S1d1.1), then break up the string into 2 parts, the char and angle
                     inputAsChars = list(assumedLatIN)
                     firstChar = inputAsChars[0]
-#LOC above = 350
                     angleChars = inputAsChars[1:len(inputAsChars)]
                     #convert angleChars to a single string
                     angleString = "".join(angleChars)
@@ -196,7 +188,6 @@ class Validate():
                     elif (assumedLatIN == "0d0.0"):
                             result = True
             
-        
         #else, keep result = invalid (AKA False)
         
         return result
@@ -244,3 +235,4 @@ class Validate():
             
         #else, keep result = invalid (AKA False)
         return result
+#LOC = 50 + 78 = 128

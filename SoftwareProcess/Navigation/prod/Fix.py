@@ -6,7 +6,7 @@ Created on October 12, 2016
 
 #LOC = 191 (10/24/16)
 #LOC = 292 (12/1/16)
-#LOC = 391 (12/4/16)
+#LOC = 239 (12/4/16)
 from datetime import datetime
 import os
 import math
@@ -19,6 +19,7 @@ import Navigation.prod.AriesList as AriesList
 import Navigation.prod.StarsList as StarsList
 import Navigation.prod.Angle as Angle
 import Navigation.prod.Validate as Validate
+import Navigation.prod.Calculate as Calculate
 
 
 class Fix():
@@ -36,7 +37,7 @@ class Fix():
             self.starFileName = None
             
             #initialize sightings error found variable
-            self.sightingsErrors = 0;
+            self.sightingsErrors = 0
             
             #initialize the SightingsList, AriesList, and StarList
             self.sightingsList = SightingsList.SightingsList()
@@ -48,9 +49,12 @@ class Fix():
             self.assumedLong = None
             
             #initialize the Validate class as a variable for this instance of Fix
-            #the Validate class has all the function that check that the data is in correct format;
+            #the Validate class has all the functions that check that the data is in correct format;
             # the functions will return True if the entered value is valid, otherwise False
-            self.validCheck = Validate.Validate() 
+            self.validCheck = Validate.Validate()
+            #initialize the Calculate class as a variable for this instance of Fix
+            # the Calculate class has all the functions that make calculations for the Fix class
+            self.calc = Calculate.Calculate()
             
             #create or append the file with the desired name
             try:
@@ -87,9 +91,9 @@ class Fix():
     #note the below 3 function assume that the fileName_IN was checked for .xml and is a string
     def setSiteFileName(self, fileName_IN):
         self.siteFileName = fileName_IN
-        pass
 #LOC above = 50
-    
+        pass
+
     def setAriesFileName(self, fileName_IN):
         self.ariesFileName = fileName_IN
         pass
@@ -125,7 +129,6 @@ class Fix():
         result = (float(farIN) - 32.0) * 5.0 / 9.0
         return result
         
-    
     def calcAdjustedAlt(self, heightIN=None, pressureIN=None, tempIN=None, altitudeIN=None, horizonIN= None):
         funcName = "Fix.calcAdjustedAlt"
         result = ""
@@ -140,7 +143,6 @@ class Fix():
                 dip = (-0.97 * math.sqrt(heightIN)) / 60
             else:
                 dip = 0.0
-            
             
             # refraction = ( -0.00452 * pressure ) / ( 273 + celsius( temperature ) ) / tangent( observedAltitude )
             refraction = (-0.00452 * pressureIN) / (273 + self.celsius(tempIN)) / observedAltAngle.tangent()
@@ -168,16 +170,14 @@ class Fix():
     def getSightings(self, assumedLatIN=None, assumedLongIN=None):
         result = ("0d0.0", "0d0.0")
         funcName = "Fix.getSightings"
+#LOC above = 100
         
         if assumedLatIN == None:
-#LOC above = 100
             assumedLatIN = "0d0.0"
         if assumedLongIN == None:
             assumedLongIN = "0d0.0"
             
         #check if assumedLatIN is valid
-        print (assumedLatIN)
-        print (assumedLongIN)
         flag1 = self.validCheck.validAssumedLat(assumedLatIN)
         flag2 = self.validCheck.validAssumedLong(assumedLongIN)
         
@@ -185,12 +185,11 @@ class Fix():
             raise ValueError(funcName + ":  invalid latitude or longitude input")
         #set Fix's assumedLat and assumedLong
         self.assumedLat = assumedLatIN
-        print "assumedLat: " + str(self.assumedLat)
+        #print "assumedLat: " + str(self.assumedLat)
         self.assumedLong = assumedLongIN
-        print "assumedLong: " + str(self.assumedLong)
+        #print "assumedLong: " + str(self.assumedLong)
         
         #if aries, sighting, and star files have been set -> proceed; else, raise error 
-        
         
         if self.getAriesFileName() <> None and self.getSiteFileName() <> None and self.getStarFileName() <> None:
             #get the data from the sighting file and write each sighting to log file
@@ -211,7 +210,6 @@ class Fix():
         return result
     
     def getData(self):
-        
         #returns True if all data was correct and has mandatory data
         result = True
         errorString = "Sight File: " + self.siteFileName + "\n"
@@ -231,7 +229,7 @@ class Fix():
             #get mandatory data
             try:
                 currentSighting.setBody(aSighting.getElementsByTagName('body')[0].firstChild.data) 
-                print "body: " + currentSighting.getBody()
+                #print "body: " + currentSighting.getBody()
                 currentSighting.setDate(aSighting.getElementsByTagName('date')[0].firstChild.data)
                 currentSighting.setTime(aSighting.getElementsByTagName('time')[0].firstChild.data)
                 currentSighting.setObservation(aSighting.getElementsByTagName('observation')[0].firstChild.data)
@@ -254,15 +252,15 @@ class Fix():
                 currentSighting.setHorizon("natural")
             # b/c the next few values need to be converted to int or floats, there is more code to ensure this before setting Sighting object values
             if len(aSighting.getElementsByTagName('height')) > 0:
-#LOC above = 150
                 thisHeight = aSighting.getElementsByTagName('height')[0].firstChild.data
-                print "height: " + thisHeight
+                #print "height: " + thisHeight
                 #below explains why need a thisCanBeAFloat and thisCanBeAnInt
                 #https://www.peterbe.com/plog/interesting-casting-in-python
                 if self.validCheck.thisCanBeAFloat(thisHeight) == True or self.validCheck.thisCanBeAnInt(thisHeight) == True:
                     #check for int first!!!
                     if self.validCheck.thisCanBeAnInt(thisHeight) == True:
                         currentSighting.setHeight(int(thisHeight))
+#LOC above = 150
 
                     elif self.validCheck.thisCanBeAFloat(thisHeight) == True:
                         currentSighting.setHeight(float(thisHeight))
@@ -275,7 +273,7 @@ class Fix():
             else:
                 #no height, so set default
                 currentSighting.setHeight(0.0)
-                print "no height found"
+                #print "no height found"
             if len(aSighting.getElementsByTagName('pressure')) > 0:
                 thisPressure = aSighting.getElementsByTagName('pressure')[0].firstChild.data
                 if self.validCheck.thisCanBeAnInt(thisPressure) == True:
@@ -302,7 +300,6 @@ class Fix():
             # check that these values are correct have the correct values
             if currentSighting.getHeight() <> None:
                 if self.validCheck.validHeight(currentSighting.getHeight()) == False:
-# above = 150 LOC
                     result = False
                     errorString = errorString + "invalid Height\n"
             if currentSighting.getTemp() <> None:
@@ -318,9 +315,7 @@ class Fix():
                     result = False
                     errorString = errorString + "invalid Horizon\n"
             
-            
             #if have time go back and trim off extra white spaces
-            
             
             #add currentSighting to the SightingsList object
             
@@ -330,7 +325,6 @@ class Fix():
             
             #else there was no sighting error, so write valid log entry
             else:
-#LOC above = 200
                 #if have time come back and do the above and sort the list by date, body, etc
                 # for now, just write sighting to log file
                 stringToWrite = ("LOG: " + str(datetime.today()) + " " + str(currentSighting.getBody()) + "\t" + str(currentSighting.getDate()) + "\t"
@@ -342,6 +336,7 @@ class Fix():
             
         #done looping through site file
         logFile.close()
+#LOC above = 200
         #print "error string: " + errorString + "\n"
         return result
     
@@ -365,7 +360,6 @@ class Fix():
                 logFile.write(lineToWrite)
                 logFile.close()
             except:
-#LOC above = 300
                 raise ValueError(funcName + ":  cannot open and write to the log file for some reason")
         else:
             raise ValueError(funcName + ":  invalid input")
@@ -383,7 +377,6 @@ class Fix():
             else:
                 result = str(os.path.abspath(starFile))
                 
-                
             #if get to here, the file exists, so set the ariesFileName value
             self.setStarFileName(starFile)
             #create string to write to log
@@ -399,47 +392,4 @@ class Fix():
         
         return result
         
-    def calcSHA_Star(self):
-        #SHA = longitude from the star file
-        
-        pass
-    
-    def calcGHA1_Aries(self):
-        
-        pass
-    
-    def calcGHA2_Aries(self):
-        
-        pass
-    
-    def calcGHA_Aries(self):
-        #
-        pass
-    
-    def calcApproxLat(self, assumedLat):
-        
-        pass
-        
-    def calcApproxLong(self):
-        
-        pass
-        
-    def calcLocalHourAngle(self):
-        
-        pass
-        
-    def calcCorrectedAltitude(self):
-        
-        pass
-        
-    def calcDistanceAdj(self):
-        
-        pass
-        
-    def calcAzimuthAdj(self):
-        
-        pass
-        
-    
-
-#LOC above = 391 (12/4/16)
+#LOC above = 239 (12/4/16)
